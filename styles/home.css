@@ -7,9 +7,23 @@
     align-items: center;
     color:white
 }
-.MainDiv .backgroundImg{
+.MainDiv .backgroundImg1{
     z-index: -1;
     width: 100vw;
     height: 100vh;
     position: absolute;
+}
+.characterCardsHold{
+width: 100vw;
+height: fit-content;
+background: black;
+display:flex;
+justify-content: center;
+align-items: center;
+z-index: -1;
+}
+.backgroundImg2{
+    opacity: 0.1;
+    width: 100%;
+    height: fit-content;
 }

@@ -4,12 +4,21 @@ body{
     overflow-x: hidden;
 }
 .nav{
+    opacity: 0;
+    visibility: hidden;
+    
+}
+.nav1{
     width:100vw;
-    position: sticky;
+    position: fixed;
     height: 4rem;
-    background-color: rgba(0, 0, 0, 0.811);
-    border: 3px solid goldenrod;
+    background-color: rgba(0, 0, 0, 0.867);
+    border: 2px solid #c5a181;
     border-inline: 0px;
     border-top: 0px;
-    display: none;
+    opacity: 1;
+    visibility: visible;
+    transition:visibl 0.5s, opacity 0.5s;
+    z-index: 1;
+    
 }
