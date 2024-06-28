@@ -1,3 +1,4 @@
+
 .MainDiv{
     width: 100vw;
     height: 100vh;
@@ -16,7 +17,7 @@
 .characterCardsHold{
 width: 100vw;
 height: fit-content;
-background: black;
+background: rgb(24, 24, 24);
 display:flex;
 justify-content: center;
 align-items: center;
@@ -26,4 +27,14 @@ z-index: -1;
     opacity: 0.1;
     width: 100%;
     height: fit-content;
+}
+.search{
+    position:absolute;
+    margin-top: 10px;
+}
+.search>form>input{
+    border-radius: 30px;
+    width: 25rem;
+    height: 24px;
+    border:0;
 }

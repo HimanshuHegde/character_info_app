@@ -1,6 +1,7 @@
 import Image from "next/image";
 import "@/styles/home.css"
 import { url } from "inspector";
+import Search from '@/components/search'
 import { Noto_Serif_JP } from "next/font/google";
 const serif =Noto_Serif_JP({
   weight: '600',
@@ -20,6 +21,7 @@ export default function Home() {
       width={1000}
       height={1547}
       alt="backgroundImage2"/>
+     <Search/>
     </div>
     </>
   );
