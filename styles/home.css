@@ -6,7 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color:white
+    color:#f2f2f2;
+    text-shadow: 2px 2px 5px rgb(187, 179, 136);
 }
 .MainDiv .backgroundImg1{
     z-index: -1;
@@ -16,12 +17,13 @@
 }
 .characterCardsHold{
 width: 100vw;
+position: relative;
 height: fit-content;
 background: rgb(24, 24, 24);
 display:flex;
 justify-content: center;
-align-items: center;
-z-index: -1;
+/* align-items: center; */
+z-index: 1;
 }
 .backgroundImg2{
     opacity: 0.1;
@@ -30,11 +32,60 @@ z-index: -1;
 }
 .search{
     position:absolute;
-    margin-top: 10px;
+    margin-top: 5px;
+    top:10px;
+    z-index: 3;
 }
-.search>form>input{
+.search>input[type="text"]{
     border-radius: 30px;
-    width: 25rem;
-    height: 24px;
+    width: 15rem;
+    height: 30px;
     border:0;
+    background-color: rgba(25, 24, 24, 0.849);
+    border:2px #c5a181 solid;
+    transition: 0.5s;
+    color:white;
+    padding-left: 20px;
+    
+}
+
+.search>input[type="text"]:focus{
+    border:2px gold solid;
+    width: 25rem;
+    transition:0.5s;
+    outline: none;
+}
+.container{
+    width:100vw;
+    height:fit-content;
+    display: grid;
+    grid-template-rows: auto;
+    position: absolute;
+}
+.categoryDiv{
+    height:fit-content;
+    width:100vw;
+}
+.category{
+    display:inline-block;
+    color:gold; 
+    border:none;
+}
+.filters{
+    outline: none;
+    padding-left:10px;
+    padding-block: 5px;
+    background-color: rgba(0, 0, 0, 0.409);
+    color: gold;
+    border:none
+}
+.filters>option{
+   background: rgba(0, 0, 0, 0.97);
+   border:none;
+   border-bottom: 1px;
+   border-color: gold;
+   border-style: solid;
+   color:#c5a181;
+    padding-block: 5px;
+    
 }

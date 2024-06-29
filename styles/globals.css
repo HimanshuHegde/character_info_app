@@ -2,23 +2,74 @@ body{
     margin:0;
     padding: 0;
     overflow-x: hidden;
+    
 }
 .nav{
-    opacity: 0;
-    visibility: hidden;
-    
-}
-.nav1{
-    width:100vw;
+    width:98vw;
     position: fixed;
     height: 4rem;
-    background-color: rgba(0, 0, 0, 0.867);
-    border: 2px solid #c5a181;
-    border-inline: 0px;
-    border-top: 0px;
+    /* background-color: rgba(0, 0, 0, 0.867);
+    border: 2px solid #c5a181; */
+    /* border-inline: 0px;
+    border-top: 0px; */
     opacity: 1;
     visibility: visible;
+    display: block;
     transition:visibl 0.5s, opacity 0.5s;
-    z-index: 1;
+    z-index: 2;
+    display:flex;
+    justify-content: center;
+    padding-top:10px;
     
 }
+
+.logo{
+    width:8%;
+    height:90%;
+}
+.invisibleDiv{
+    flex-grow: 1;
+}
+.userLogin{
+    width:fit-content;
+    height:50%;
+    border:2px solid #c5a181;
+    display:flex;
+    justify-content: center;
+    flex-grow: 0;
+    align-items: center;
+}
+.userLogin p{
+    margin:0;
+    font-size: small;
+    padding-inline:3px;
+    color:gold
+}
+.menu{
+    width:3%;
+    height:50%;
+    display:grid;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: center;
+    /* row-gap: 1px; */
+    margin-left: 50px;
+}
+.menu .line1,
+.menu .line2,
+.menu .line3{
+    height:3px;
+    background-color:gold;
+    border-radius: 0%;
+    border:none;
+}
+.menu .line1{
+    width: 98%;
+}
+.menu .line2{
+    width: 67%;
+}
+.menu .line3{
+    width: 34%;
+}
+

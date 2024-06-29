@@ -22,6 +22,20 @@ export default function Home() {
       height={1547}
       alt="backgroundImage2"/>
      <Search/>
+     <div className="container">
+      <div className="categoryDiv">
+        <label className="category"><p>Category : </p></label>
+        <select className="filters" name="choose">
+          <option value = "All">ALL</option>
+          <option value = "whistles">Whistles</option>
+          <option value= "Characters">Characters</option>
+          <option value = "Artifacts">Artifacts</option>
+        </select>
+      </div>
+      <div className="whistleInfo"></div> 
+      <div className="characterInfo"></div>
+      <div className="artifactInfo"></div>
+      </div>
     </div>
     </>
   );
