@@ -8,7 +8,7 @@ export default function Card({object}){
                 <Image className="displayInfo" src={object.image}
                 width={150}
                 height={150}
-                alt="whistles image"
+                alt={object.name}
                 />
             </div>
             <p className="cardName">{object.name}</p>

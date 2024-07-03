@@ -67,14 +67,14 @@ z-index: 1;
 }
 .categoryDiv{
     height:fit-content;
-    width:fit-content
-
+    width:fit-content;
+    margin-left:15rem;
 }
 .category{
     display:inline-block;
     color:gold; 
     border:none;
-    margin-left: 10rem;
+    
 }
 .filters{
     outline: none;
@@ -94,17 +94,18 @@ z-index: 1;
     padding-block: 5px;
     
 }
-.whistleInfoContainer{
+.whistleInfoContainer,.artifactInfoContainer{
     display:grid;
     grid-template-rows: auto auto;
     color:#c5a181;
 }
-.whistleInfo{
+.whistleInfo,.artifactInfo{
     display:grid;
     grid-template-columns: repeat(5,auto);
     place-items: center;
+    row-gap: 4rem;
 }
-.whistleInfoContainer p{
+.whistleInfoContainer,.artifactInfoContainer p{
    text-align: center;
    font-family:Georgia, 'Times New Roman', Times, serif;
 }
