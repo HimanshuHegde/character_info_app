@@ -20,20 +20,23 @@ body{
     display:flex;
     justify-content: center;
     padding-top:10px;
-    
+    pointer-events: none;
+}
+.nav *{
+    pointer-events: all;
 }
 
 .logo{
-    width:8%;
+    width:10%;
     height:90%;
+    margin-right: auto;
+    margin-left: 1rem;
 }
-.invisibleDiv{
-    flex-grow: 1;
-}
+
 .userLogin{
     width:fit-content;
     height:50%;
-    border:2px solid #c5a181;
+    border:2px solid gold;
     display:flex;
     justify-content: center;
     flex-grow: 0;

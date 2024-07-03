@@ -1,13 +1,19 @@
 import Image from "next/image";
 import "@/styles/home.css"
-import { url } from "inspector";
+import Card from '@/components/card'
 import Search from '@/components/search'
 import { Noto_Serif_JP } from "next/font/google";
+import { getArtifactsData, getCharacterData, getWhistleData } from "@/backend";
+import { get } from "http";
 const serif =Noto_Serif_JP({
   weight: '600',
   subsets: ['latin'],
 })
-export default function Home() {
+export default async function Home(){
+  const getWhistle = await getWhistleData();
+  const getCharacter = await getCharacterData();
+  const getArtifacts = await getArtifactsData();
+
   return (<>
     <div className="MainDiv">
       <Image className="backgroundImg1" src={"/874398.png"}
@@ -32,7 +38,14 @@ export default function Home() {
           <option value = "Artifacts">Artifacts</option>
         </select>
       </div>
-      <div className="whistleInfo"></div> 
+      <div className="whistleInfoContainer">
+        <p className="heading">WHISTLES</p>
+        <div className="whistleInfo">
+          {
+            getWhistle?.map((e)=>(<Card object={e}/>))
+          }
+      </div>
+      </div> 
       <div className="characterInfo"></div>
       <div className="artifactInfo"></div>
       </div>

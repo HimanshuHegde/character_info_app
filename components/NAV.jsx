@@ -19,7 +19,6 @@ export default function Navigation(){
                 height={426}
                 alt="logo"
                 />
-                 <div className="invisibleDiv"></div> 
                <div className="userLogin">
                 <p>Sign Up/Login</p>
                </div>

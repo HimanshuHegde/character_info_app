@@ -1,0 +1,13 @@
+.cardContainer{
+    width:fit-content;
+    height: fit-content;
+    display:grid;
+    grid-template-rows: auto auto;
+    place-items: center;
+    color:gold;
+}
+.cardImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
