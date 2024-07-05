@@ -69,6 +69,7 @@ z-index: 1;
     background-size: cover;
     position: absolute; */
     /* margin-top:7rem; */
+    padding-bottom: 10rem;
     
 }
 .container::before{
