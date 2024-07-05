@@ -94,24 +94,25 @@ z-index: 1;
     padding-block: 5px;
     
 }
-.whistleInfoContainer,.artifactInfoContainer{
+.whistleInfoContainer,.artifactInfoContainer,.charactersInfoContainer{
     display:grid;
     grid-template-rows: auto auto;
     color:#c5a181;
 }
-.whistleInfo,.artifactInfo{
+.whistleInfo,.artifactInfo,.charactersInfo{
     display:grid;
     grid-template-columns: repeat(5,auto);
     place-items: center;
     row-gap: 4rem;
 }
-.whistleInfoContainer,.artifactInfoContainer p{
+.whistleInfoContainer,.artifactInfoContainer,.charactersInfoContainer p{
    text-align: center;
    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 .heading{
     font-size:x-large;
     background-color: rgba(0, 0, 0, 0.167);
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
+    margin-top: 3rem;
     
 }

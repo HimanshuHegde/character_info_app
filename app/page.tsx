@@ -99,18 +99,23 @@ export default  function Home(){
         <p className="heading">WHISTLES</p>
         <div className="whistleInfo">
           {
-            data?.[0]?.map((e:(any))=>(<Card object={e}/>))
+            data?.[0].map((e:(any))=>(<Card object={e}/>))
           }
       </div>
       </div> 
       <div className="charactersInfoContainer">
-      <div className="charactersInfo"></div>
+        <p className="heading">Characters</p>
+        <div className="charactersInfo">
+          {
+            data?.[1].map((e:(any))=>(<Card object={e}/>))
+          }
+        </div>
       </div>
       <div className="artifactInfoContainer">
         <p className="heading">ARTIFACTS</p>
         <div className="artifactInfo">
           {
-          data?.[2]?.map((e:(any))=>(<Card object={e}/>))
+          data?.[2].map((e:(any))=>(<Card object={e}/>))
           }
         </div>
       </div>

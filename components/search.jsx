@@ -1,6 +1,7 @@
 "use client"
 import { useEffect } from "react"
 export default function Search(){
+    
     useEffect(()=>{
     window.addEventListener('scroll',()=>{
         if(window.scrollY>=window.innerHeight){
@@ -11,7 +12,13 @@ export default function Search(){
     })    
 },[])
     return( <>
-        <search className="search" >
+        <search className="search" onClick={()=>{
+            window.scrollTo({
+                top:window.innerHeight,
+                left:0,
+                behavior:"smooth"
+            });
+        }} >
             <input type="text" name="search" placeholder="SEARCH ..." />
         </search>
         </>)
