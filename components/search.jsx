@@ -14,7 +14,7 @@ export default function Search(){
     return( <>
         <search className="search" onClick={()=>{
             window.scrollTo({
-                top:window.innerHeight,
+                top:window.innerHeight+1,
                 left:0,
                 behavior:"smooth"
             });

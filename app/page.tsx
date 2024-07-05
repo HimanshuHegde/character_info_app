@@ -80,10 +80,10 @@ export default  function Home(){
       <h1 className={serif.className}>WELCOME TO THE WORLD OF MADE IN ABYSS</h1>
     </div>
     <div className="characterCardsHold">
-      <Image className="backgroundImg2" src ={"/Map_of_the_Abyss_Anime.png"}
+      {/* <Image className="backgroundImg2" src ={"/Map_of_the_Abyss_Anime.png"} 
       width={1000}
       height={1547}
-      alt="backgroundImage2"/>
+      alt="backgroundImage2"/>*/}
      <Search/>
      <div className="container">
       <div className="categoryDiv">

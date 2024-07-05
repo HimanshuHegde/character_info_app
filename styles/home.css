@@ -28,7 +28,7 @@ z-index: 1;
 .backgroundImg2{
     opacity: 0.1;
     width: 100%;
-    height: fit-content;
+    height: 100%;
     pointer-events: none;
 }
 .search{
@@ -62,8 +62,28 @@ z-index: 1;
     height:fit-content;
     display: grid;
     row-gap: 2rem;
+    margin-top: 8rem;
+    /* background-image: url("/Map_of_the_Abyss_Anime.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute; */
+    /* margin-top:7rem; */
+    
+}
+.container::before{
+    content: "";
     position: absolute;
-    margin-top:7rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/Map_of_the_Abyss_Anime.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.1;
+     z-index: -1;
 }
 .categoryDiv{
     height:fit-content;
