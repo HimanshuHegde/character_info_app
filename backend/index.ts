@@ -1,6 +1,6 @@
 'use server'
 import { MongoClient } from "mongodb";
-import { json } from "stream/consumers";
+
 let isConnected = false;
 const client = new MongoClient('mongodb://localhost:27017', { monitorCommands: true });
 let characterCollection =  client.db('MadeInAbyss').collection('Characters');
@@ -12,6 +12,10 @@ async function connect(){
         await client.connect();
         isConnected=true
     }
+}
+export async function search(name:(string)){
+    
+    return JSON.parse(JSON.stringify([await characterCollection.find({"name":name}).toArray(),await artifactsCollection.find({"name":name}).toArray(),await whistleCollection.find({"name":name}).toArray()]))
 }
 export async function getCharacterData(){
     try {
