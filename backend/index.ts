@@ -13,9 +13,9 @@ async function connect(){
         isConnected=true
     }
 }
-export async function search(name:(string)){
+export async function search(name:(string|undefined)){
     
-    return JSON.parse(JSON.stringify([await characterCollection.find({"name":name}).toArray(),await artifactsCollection.find({"name":name}).toArray(),await whistleCollection.find({"name":name}).toArray()]))
+    return JSON.parse(JSON.stringify([await characterCollection.find({"name":{$regex:new RegExp(`^${ name}[a-zA-Z ]*`,'i')}}).toArray(),await artifactsCollection.find({"name":{$regex:new RegExp(`^${name}[a-zA-Z ]*`,'i')}}).toArray(),await whistleCollection.find({"name":{$regex:new RegExp(`^${name}[a-zA-Z ]*`,'i')}}).toArray()]))
 }
 export async function getCharacterData(){
     try {

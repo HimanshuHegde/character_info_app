@@ -4,9 +4,10 @@ import "@/styles/home.css"
 import Card from '@/components/card'
 import Search from '@/components/search'
 import { Noto_Serif_JP } from "next/font/google";
-import { getArtifactsData, getCharacterData, getWhistleData } from "@/backend";
+import { getArtifactsData, getCharacterData, getWhistleData, search } from "@/backend";
 import { get } from "http";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 const serif =Noto_Serif_JP({
   weight: '600',
   subsets: ['latin'],
@@ -59,6 +60,16 @@ export default  function Home(){
           break;
     }
   })
+  const param = useSearchParams();
+    let [searchResult,setSearchResult] = useState<Array<any>|null>(null) 
+    useEffect(()=>{
+      (async ()=>{
+        
+        let temp = ( await search(param?.get("name")?.toString()))
+        setSearchResult(temp);
+        console.log(param.get('name'))
+      })()
+    },[param.get("name")])
   let [data,setData] = useState<Array<any>|null>(null)
   useEffect(()=>{
       (async ()=>{
@@ -79,7 +90,7 @@ export default  function Home(){
       alt="backgroundImage1"/>
       <h1 className={serif.className}>WELCOME TO THE WORLD OF MADE IN ABYSS</h1>
     </div>
-    <div className="characterCardsHold">
+    {param.get("name")==null?<div className="characterCardsHold">
       {/* <Image className="backgroundImg2" src ={"/Map_of_the_Abyss_Anime.png"} 
       width={1000}
       height={1547}
@@ -120,7 +131,8 @@ export default  function Home(){
         </div>
       </div>
       </div>
-    </div>
+    </div>:<div><Search/></div>}
+    
     </>
   );
 }

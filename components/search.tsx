@@ -12,10 +12,11 @@ export default function Search(){
         e?param.set("name",e):param.delete("name");
         replace(`${path}?${param.toString()}`,{scroll:false});
     },300)
-    // let [searchInput,setSearchInput] = useState<string>("");
-    //     useEffect(()=>{async (searchInput:(string))=>{
-    //         console.log(await search(searchInput));
-    //     }},[searchInput])
+    //  let [searchInput,setSearchInput] = useState<string|undefined>(useParam.get("name")?.toString);
+    //  console.log(searchInput)
+        // useEffect(()=>{async ()=>{
+        //     console.log(await search());
+        // }},[useParam])
     
     useEffect(()=>{
     window.addEventListener('scroll',()=>{
