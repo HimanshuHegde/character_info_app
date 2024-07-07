@@ -42,3 +42,11 @@ export async function getArtifactsData(){
         console.log("artifactsCollection error");
     }
 }
+export async function getIndividualCharacterData(name:(string|null)){
+    try{
+        await connect();
+    return JSON.parse(JSON.stringify(await characterCollection.findOne({"name":`${name}`})))
+    }catch(error){
+        console.log("getIndividualCharacterData error");
+    }
+}

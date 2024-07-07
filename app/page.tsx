@@ -7,12 +7,14 @@ import { Noto_Serif_JP } from "next/font/google";
 import { getArtifactsData, getCharacterData, getWhistleData, search } from "@/backend";
 import { get } from "http";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams,useRouter, usePathname } from "next/navigation";
+import SearchResult from "@/components/searchResult";
 const serif =Noto_Serif_JP({
   weight: '600',
   subsets: ['latin'],
 })
 export default  function Home(){
+  
   const filter = document.querySelector(".filters");
   let whistleContainer = document.querySelector(".whistleInfoContainer") as HTMLElement|null;
   let charactersContainer = document.querySelector(".charactersInfoContainer") as HTMLElement|null;
@@ -60,16 +62,9 @@ export default  function Home(){
           break;
     }
   })
-  const param = useSearchParams();
-    let [searchResult,setSearchResult] = useState<Array<any>|null>(null) 
-    useEffect(()=>{
-      (async ()=>{
-        
-        let temp = ( await search(param?.get("name")?.toString()))
-        setSearchResult(temp);
-        console.log(param.get('name'))
-      })()
-    },[param.get("name")])
+   const param = useSearchParams();
+     
+   
   let [data,setData] = useState<Array<any>|null>(null)
   useEffect(()=>{
       (async ()=>{
@@ -90,11 +85,8 @@ export default  function Home(){
       alt="backgroundImage1"/>
       <h1 className={serif.className}>WELCOME TO THE WORLD OF MADE IN ABYSS</h1>
     </div>
-    {param.get("name")==null?<div className="characterCardsHold">
-      {/* <Image className="backgroundImg2" src ={"/Map_of_the_Abyss_Anime.png"} 
-      width={1000}
-      height={1547}
-      alt="backgroundImage2"/>*/}
+    
+    <div className="characterCardsHold">
      <Search/>
      <div className="container">
       <div className="categoryDiv">
@@ -110,7 +102,7 @@ export default  function Home(){
         <p className="heading">WHISTLES</p>
         <div className="whistleInfo">
           {
-            data?.[0].map((e:(any))=>(<Card object={e}/>))
+            data?.[0].map((e:(any))=>(<Card image={e.image} name ={e.name}/>))
           }
       </div>
       </div> 
@@ -118,7 +110,9 @@ export default  function Home(){
         <p className="heading">Characters</p>
         <div className="charactersInfo">
           {
-            data?.[1].map((e:(any))=>(<Card object={e}/>))
+            data?.[1].map((e:(any))=>(<a href={`/characters/?name=${encodeURIComponent(e.name)}`}>
+              <Card image={e.image} name ={e.name}/>
+            </a>))
           }
         </div>
       </div>
@@ -126,12 +120,15 @@ export default  function Home(){
         <p className="heading">ARTIFACTS</p>
         <div className="artifactInfo">
           {
-          data?.[2].map((e:(any))=>(<Card object={e}/>))
+          data?.[2].map((e:(any))=>(<Card image={e.image} name ={e.name}/>))
           }
         </div>
       </div>
       </div>
-    </div>:<div><Search/></div>}
+      {param.get("name")==null?null:
+      <SearchResult/>}
+    </div>
+    
     
     </>
   );

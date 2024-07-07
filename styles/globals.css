@@ -33,10 +33,6 @@ html{
     width:98vw;
     position: fixed;
     height: 4rem;
-    /* background-color: rgba(0, 0, 0, 0.867);
-    border: 2px solid #c5a181; */
-    /* border-inline: 0px;
-    border-top: 0px; */
     opacity: 1;
     visibility: visible;
     display: block;
@@ -50,7 +46,32 @@ html{
 .nav *{
     pointer-events: all;
 }
+.search{
+    position:absolute;
+    margin-top: 5px;
+    top:10px;
+    z-index: 5;
+}
+.search>input[type="text"]{
+    border-radius: 30px;
+    width: 15rem;
+    height: 30px;
+    position: relative;
+    border:0;
+    background-color: rgba(25, 24, 24, 0.849);
+    border:2px #c5a181 solid;
+    transition: 0.5s;
+    color:white;
+    padding-left: 20px;
+    z-index: 5;
+}
 
+.search>input[type="text"]:focus{
+    border:2px gold solid;
+    width: 25rem;
+    transition:0.5s;
+    outline: none;
+}
 .logo{
     width:10%;
     height:90%;
@@ -80,7 +101,6 @@ html{
     grid-template-rows: auto;
     align-items: center;
     justify-items: center;
-    /* row-gap: 1px; */
     margin-left: 50px;
 }
 .menu .line1,

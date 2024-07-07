@@ -1,17 +1,17 @@
 import Image from "next/image"
 import "@/styles/card.css"
-export default function Card({object}){
+export default function Card({image,name}){
 
     return (
         <div className="cardContainer">
             <div className="cardImg">
-                <Image className="displayInfo" src={object.image}
+                <Image className="displayInfo" src={image}
                 width={150}
                 height={150}
-                alt={object.name}
+                alt={name}
                 />
             </div>
-            <p className="cardName">{object.name}</p>
+            <p className="cardName">{name}</p>
         </div>
     )
 }

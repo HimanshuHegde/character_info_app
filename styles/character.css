@@ -1,0 +1,29 @@
+.mainMainDiv{
+    width:100vw;
+    height: 100vh;
+    background-image: url("/background1.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    z-index: -1;
+
+}
+.charactersMainDiv{
+    backdrop-filter: blur(10px);
+    width:100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.483);
+
+
+}
+.characterSearchDiv{
+    width:100%;
+    height: fit-content;
+    position: absolute;
+    z-index: 0;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
