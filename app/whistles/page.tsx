@@ -1,19 +1,19 @@
 'use client'
 import"@/styles/character.css"
 import Search from "@/components/search";
-import { getCharacterData, getIndividualCharacterData } from "@/backend";
+import {  getIndividualArtifactsData, getIndividualWhistlesData,  } from "@/backend";
 import Acards from "@/components/Acard"; 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-export default  function Character(){
+export default  function Whistles(){
     
-    let [character,setCharacter] = useState<any>({})
+    let [whistle,setWhistle] = useState<any>({})
     const param = useSearchParams();
     useEffect(()=>{
         (async ()=>{
             const name = param.get("name")
-            setCharacter(await getIndividualCharacterData(name));
+            setWhistle(await getIndividualWhistlesData(name));
         })()
     },[])
     
@@ -32,15 +32,15 @@ export default  function Character(){
                         
                     <div className="characterInfo">
                         <div className="characterCard">
-                            <Acards image={character.actualPhoto
-                            } name={character.name}/> 
+                            <Acards image={whistle.image
+                            } name={whistle.name}/> 
                         </div>
-                            <h1>CHARACTER DETAILS</h1>
+                            <h1>WHISTLE DETAILS</h1>
                             <hr></hr>
                         <div className="cInfo">
-                            <p><span>Name : </span>{character.name}</p>
-                            <p><span>Age : </span>{character.age}</p>
-                            <p><span>Description : </span>{character.description}</p>
+                            <p><span>Name : </span>{whistle.name}</p>
+                            <p><span>Qualification : </span>{whistle.qualification}</p>
+                            <p><span>Description : </span>{whistle.description}</p>
                         </div>
                     </div>
                     

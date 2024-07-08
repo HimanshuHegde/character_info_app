@@ -102,7 +102,7 @@ export default  function Home(){
         <p className="heading">WHISTLES</p>
         <div className="whistleInfo">
           {
-            data?.[0].map((e:(any))=>(<Card image={e.image} name ={e.name}/>))
+            data?.[0].map((e:(any))=>(<a href={`/whistles/?name=${encodeURIComponent(e.name)}`}><Card image={e.image} name ={e.name}/></a>))
           }
       </div>
       </div> 
@@ -120,7 +120,9 @@ export default  function Home(){
         <p className="heading">ARTIFACTS</p>
         <div className="artifactInfo">
           {
-          data?.[2].map((e:(any))=>(<Card image={e.image} name ={e.name}/>))
+          data?.[2].map((e:(any))=>(<a href={`/artifacts/?name=${encodeURIComponent(e.name)}`}>
+          <Card image={e.image} name ={e.name}/>
+        </a>))
           }
         </div>
       </div>

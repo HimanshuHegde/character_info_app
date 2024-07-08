@@ -1,19 +1,19 @@
 'use client'
 import"@/styles/character.css"
 import Search from "@/components/search";
-import { getCharacterData, getIndividualCharacterData } from "@/backend";
+import {  getIndividualArtifactsData,  } from "@/backend";
 import Acards from "@/components/Acard"; 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-export default  function Character(){
+export default  function Artifacts(){
     
-    let [character,setCharacter] = useState<any>({})
+    let [artifact,setartifact] = useState<any>({})
     const param = useSearchParams();
     useEffect(()=>{
         (async ()=>{
             const name = param.get("name")
-            setCharacter(await getIndividualCharacterData(name));
+            setartifact(await getIndividualArtifactsData(name));
         })()
     },[])
     
@@ -32,15 +32,18 @@ export default  function Character(){
                         
                     <div className="characterInfo">
                         <div className="characterCard">
-                            <Acards image={character.actualPhoto
-                            } name={character.name}/> 
+                            <Acards image={artifact.image
+                            } name={artifact.name}/> 
                         </div>
-                            <h1>CHARACTER DETAILS</h1>
+                            <h1>ARTIFACT DETAILS</h1>
                             <hr></hr>
                         <div className="cInfo">
-                            <p><span>Name : </span>{character.name}</p>
-                            <p><span>Age : </span>{character.age}</p>
-                            <p><span>Description : </span>{character.description}</p>
+                            <p><span>Name : </span>{artifact.name}</p>
+                            <p><span>Type : </span>{artifact.Type}</p>
+                            <p><span>Effects : </span>{artifact.Effects}</p>
+                            <p><span>Owners : </span>{artifact.Owners}</p>
+                            <p><span>Source : </span>{artifact.Source}</p>
+                            <p><span>Description : </span>{artifact.Description}</p>
                         </div>
                     </div>
                     

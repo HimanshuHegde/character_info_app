@@ -50,3 +50,21 @@ export async function getIndividualCharacterData(name:(string|null)){
         console.log("getIndividualCharacterData error");
     }
 }
+
+export async function getIndividualArtifactsData(name:(string|null)){
+    try{
+        await connect();
+    return JSON.parse(JSON.stringify(await artifactsCollection.findOne({"name":`${name}`})))
+    }catch(error){
+        console.log("getIndividualArtifactsData error");
+    }
+}
+
+export async function getIndividualWhistlesData(name:(string|null)){
+    try{
+        await connect();
+    return JSON.parse(JSON.stringify(await whistleCollection.findOne({"name":`${name}`})))
+    }catch(error){
+        console.log("getIndividualWhistlesData error");
+    }
+}
