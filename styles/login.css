@@ -1,0 +1,45 @@
+.Tc{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+.siContainer{
+    position: absolute;
+    box-shadow:5px 5px 10px black;
+    width:25%;
+    padding-block: 5rem;
+    height:fit-content;
+    display: grid;
+    place-items: center;
+    color:gold;
+    backdrop-filter: blur(30px);
+}
+.siContainer>form{
+   display: grid;
+   grid-template-rows: auto;
+
+}
+.siContainer>form>input{
+    margin-bottom: 2rem;
+    outline: none; 
+    border: none;
+    background: rgba(218, 165, 32, 0.261);
+    height:24px;
+    padding-left: 1rem;
+}
+.siContainer>form>button{
+    margin-top: 2rem;
+    border: 2px solid gold;
+    height: 2rem;
+    background-color: rgba(255, 255, 255, 0);
+    width: fit-content;
+    padding-inline:2rem ;
+    place-self: center;
+}
+.siContainer>form>button:active{
+    border-color:transparent;
+}
+.siContainer>form>label{
+    margin-bottom: 10px;
+}
