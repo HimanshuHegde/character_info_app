@@ -17,7 +17,7 @@
     /* backdrop-filter: blur(5px); */
     width:100vw;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.483);
+    /* background-color: rgba(0, 0, 0, 0.483); */
     position: absolute;
      padding-bottom: 10rem; 
 
@@ -32,13 +32,14 @@
 }
 .characterInfo{
     width:100%;
-    height:fit-content;
+    height:100%;
     display: grid;
     place-items: center;
     position: absolute;
     backdrop-filter: blur(5px);
     top:5rem;
     padding-bottom: 5rem;
+    background-color: rgba(0, 0, 0, 0.483);
 }
 hr{
     width: 100%;

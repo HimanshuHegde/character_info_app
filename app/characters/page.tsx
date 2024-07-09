@@ -4,16 +4,17 @@ import Search from "@/components/search";
 import { getCharacterData, getIndividualCharacterData } from "@/backend";
 import Acards from "@/components/Acard"; 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import Image from "next/image";
+import SearchResult from "@/components/searchResult";
 export default  function Character(){
     
     let [character,setCharacter] = useState<any>({})
-    const param = useSearchParams();
+    const uesParam = useSearchParams();
     useEffect(()=>{
         (async ()=>{
-            const name = param.get("name")
-            setCharacter(await getIndividualCharacterData(name));
+            const id = uesParam.get("_id")
+            setCharacter(await getIndividualCharacterData(id?id:""));
         })()
     },[])
     
@@ -26,21 +27,22 @@ export default  function Character(){
                 alt="background"
                 />
                 <div className="charactersMainDiv">
+                {uesParam.get("name")?<SearchResult/>:null} 
                     <div className="characterSearchDiv">
-                            <Search/>
+                            <Search d={uesParam.get("name")?.toString()}/>
                     </div>
                         
                     <div className="characterInfo">
                         <div className="characterCard">
-                            <Acards image={character.actualPhoto
-                            } name={character.name}/> 
+                            <Acards image={character?.actualPhoto
+                            } name={character?.name}/> 
                         </div>
                             <h1>CHARACTER DETAILS</h1>
                             <hr></hr>
                         <div className="cInfo">
-                            <p><span>Name : </span>{character.name}</p>
-                            <p><span>Age : </span>{character.age}</p>
-                            <p><span>Description : </span>{character.description}</p>
+                            <p><span>Name : </span>{character?.name}</p>
+                            <p><span>Age : </span>{character?.age}</p>
+                            <p><span>Description : </span>{character?.description}</p>
                         </div>
                     </div>
                     

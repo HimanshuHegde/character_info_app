@@ -6,14 +6,15 @@ import Acards from "@/components/Acard";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
+import SearchResult from "@/components/searchResult";
 export default  function Whistles(){
     
     let [whistle,setWhistle] = useState<any>({})
-    const param = useSearchParams();
+    const useParam = useSearchParams();
     useEffect(()=>{
         (async ()=>{
-            const name = param.get("name")
-            setWhistle(await getIndividualWhistlesData(name));
+            const id = useParam.get("_id")
+            setWhistle(await getIndividualWhistlesData(id?id:""));
         })()
     },[])
     
@@ -26,21 +27,22 @@ export default  function Whistles(){
                 alt="background"
                 />
                 <div className="charactersMainDiv">
+                {useParam.get("name")?<SearchResult/>:null} 
                     <div className="characterSearchDiv">
-                            <Search/>
+                            <Search d ={useParam.get("name")?.toString()}/>
                     </div>
                         
                     <div className="characterInfo">
                         <div className="characterCard">
-                            <Acards image={whistle.image
-                            } name={whistle.name}/> 
+                            <Acards image={whistle?.image
+                            } name={whistle?.name}/> 
                         </div>
                             <h1>WHISTLE DETAILS</h1>
                             <hr></hr>
                         <div className="cInfo">
-                            <p><span>Name : </span>{whistle.name}</p>
-                            <p><span>Qualification : </span>{whistle.qualification}</p>
-                            <p><span>Description : </span>{whistle.description}</p>
+                            <p><span>Name : </span>{whistle?.name}</p>
+                            <p><span>Qualification : </span>{whistle?.qualification}</p>
+                            <p><span>Description : </span>{whistle?.description}</p>
                         </div>
                     </div>
                     

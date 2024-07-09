@@ -14,7 +14,7 @@ const serif =Noto_Serif_JP({
   subsets: ['latin'],
 })
 export default  function Home(){
-  
+  const useParam = useSearchParams();
   const filter = document.querySelector(".filters");
   let whistleContainer = document.querySelector(".whistleInfoContainer") as HTMLElement|null;
   let charactersContainer = document.querySelector(".charactersInfoContainer") as HTMLElement|null;
@@ -87,7 +87,7 @@ export default  function Home(){
     </div>
     
     <div className="characterCardsHold">
-     <Search/>
+     <Search d={useParam.get("name")?.toString()}/>
      <div className="container">
       <div className="categoryDiv">
         <label className="category"><p>Category : </p></label>
@@ -102,7 +102,7 @@ export default  function Home(){
         <p className="heading">WHISTLES</p>
         <div className="whistleInfo">
           {
-            data?.[0].map((e:(any))=>(<a href={`/whistles/?name=${encodeURIComponent(e.name)}`}><Card image={e.image} name ={e.name}/></a>))
+            data?.[0].map((e:(any))=>(<a href={`/whistles/?_id=${encodeURIComponent(e._id)}`}><Card image={e.image} name ={e.name}/></a>))
           }
       </div>
       </div> 
@@ -110,7 +110,7 @@ export default  function Home(){
         <p className="heading">Characters</p>
         <div className="charactersInfo">
           {
-            data?.[1].map((e:(any))=>(<a href={`/characters/?name=${encodeURIComponent(e.name)}`}>
+            data?.[1].map((e:(any))=>(<a href={`/characters/?_id=${encodeURIComponent(e._id)}`}>
               <Card image={e.image} name ={e.name}/>
             </a>))
           }
@@ -120,7 +120,7 @@ export default  function Home(){
         <p className="heading">ARTIFACTS</p>
         <div className="artifactInfo">
           {
-          data?.[2].map((e:(any))=>(<a href={`/artifacts/?name=${encodeURIComponent(e.name)}`}>
+          data?.[2].map((e:(any))=>(<a href={`/artifacts/?_id=${encodeURIComponent(e._id)}`}>
           <Card image={e.image} name ={e.name}/>
         </a>))
           }

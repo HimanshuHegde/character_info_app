@@ -1,5 +1,5 @@
 'use server'
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
 let isConnected = false;
 const client = new MongoClient('mongodb://localhost:27017', { monitorCommands: true });
@@ -42,28 +42,31 @@ export async function getArtifactsData(){
         console.log("artifactsCollection error");
     }
 }
-export async function getIndividualCharacterData(name:(string|null)){
+export async function getIndividualCharacterData(oid:(string)){
     try{
         await connect();
-    return JSON.parse(JSON.stringify(await characterCollection.findOne({"name":`${name}`})))
+        let id = new ObjectId(oid)
+    return JSON.parse(JSON.stringify(await characterCollection.findOne({"_id":id})))
     }catch(error){
         console.log("getIndividualCharacterData error");
     }
 }
 
-export async function getIndividualArtifactsData(name:(string|null)){
+export async function getIndividualArtifactsData(oid:(string)){
     try{
         await connect();
-    return JSON.parse(JSON.stringify(await artifactsCollection.findOne({"name":`${name}`})))
+       let id = new ObjectId(oid)
+    return JSON.parse(JSON.stringify(await artifactsCollection.findOne({"_id":id})))
     }catch(error){
         console.log("getIndividualArtifactsData error");
     }
 }
 
-export async function getIndividualWhistlesData(name:(string|null)){
+export async function getIndividualWhistlesData(oid:(string)){
     try{
         await connect();
-    return JSON.parse(JSON.stringify(await whistleCollection.findOne({"name":`${name}`})))
+        let id = new ObjectId(oid)
+    return JSON.parse(JSON.stringify(await whistleCollection.findOne({"_id":id})))
     }catch(error){
         console.log("getIndividualWhistlesData error");
     }

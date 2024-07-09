@@ -3,7 +3,7 @@ import { search } from "@/backend"
 import { useParams, usePathname, useSearchParams,useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useDebouncedCallback } from "use-debounce"
-export default function Search(){
+export default function Search({d}:(any)){
     const useParam = useSearchParams();
     const path = usePathname();
     const {replace} = useRouter();
@@ -25,6 +25,7 @@ export default function Search(){
 },[])
     return( <>
         <search className="search" onClick={()=>{
+            if(!useParam.get("_id"))
             window.scrollTo({
                 top:window.innerHeight+1,
                 // left:0,
@@ -38,7 +39,7 @@ export default function Search(){
                     handleSearch(event.target.value?event.target.value:null)}
                     
                 } 
-                defaultValue={useParam.get("name")?.toString()}
+                defaultValue={d}
              />
         </search>
         </>)
