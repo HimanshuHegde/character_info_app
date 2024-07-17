@@ -1,16 +1,17 @@
 "use client"
-// import { useEffect,useState } from "react"
+
 import Image from "next/image";
+import { useState } from "react";
+import SignUp from "./signUp";
+import SignIn from "./signIn";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import UpdateF from "./updateForm";
+import Link from "next/link";
 export default function Navigation(){
-    // const [nav,setNav] = useState('nav');
-    // useEffect(()=>{
-    //     const handleScroll = ()=>{
-    //         if(window.scrollY>=(window.innerHeight)){
-    //             setNav('nav1')
-    //         }
-    //     }
-    //     window.addEventListener('scroll',handleScroll);
-    // },[])
+    const {data:session,status} = useSession();
+    let [show,setShow] = useState("");
+    let [edit,setEdit] = useState(false);
     return( 
         <>
             <nav className='nav' >
@@ -19,17 +20,35 @@ export default function Navigation(){
                 height={426}
                 alt="logo"
                 />
-               <div className="userLogin">
-                <p>Sign Up/Login</p>
-               </div>
-               <div className="menu">
-
-                    <div className="line1"></div>
-                    <div className="line2"></div>
-                    <div className="line3"></div>
-               </div>
+                { !session?.user&&<div className="userLogin"> <button onClick={
+                    ()=>{
+                        setShow("signIn");
+                    }
+                }>Sign Up/Login</button></div>|| session?.user?.name!='admin'&&(<><button className="edit" onClick={
+                    ()=>{
+                        setEdit(true)
+                    }
+                }>Edit</button>
+                <div className="user" onClick={
+                    ()=>{
+                        signOut();
+                    }
+                }>  {session?.user?.name}</div>
+                </>)||session?.user?.name=="admin"&&<div className="admin"> <button className="edit">add</button>
+                <Link
+                href="/notification"><button className="edit">notification</button></Link>
+                <div className="user" onClick={
+                    ()=>{
+                        signOut();
+                    }
+                }>  {session?.user?.name}</div>
+               </div> }
             </nav>
+            {edit&&<UpdateF/>}
+            {show=="signIn"?<SignIn set={setShow}/>:show=="signUp"?<SignUp set={setShow}/>:<></>}
+            
             
         </>
     )
 }
+

@@ -59,6 +59,9 @@ z-index: 1;
     padding-bottom: 10rem;
     
 }
+.anchorS{
+    text-decoration: none;
+}
 /* .container::before{
     content: "";
     position: absolute;

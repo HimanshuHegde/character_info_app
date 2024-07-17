@@ -39,12 +39,45 @@ html{
     transition:visibl 0.5s, opacity 0.5s;
     z-index: 2;
     display:flex;
-    justify-content: center;
+    justify-content: center;    
     padding-top:10px;
     pointer-events: none;
 }
 .nav *{
     pointer-events: all;
+}
+.userLogin>button:active{
+    border-color:transparent;
+}
+.userLogin>button{
+    height:100%;
+    width:100%;
+    color: gold;
+    border:2px solid gold;
+    background-color: transparent;
+}
+.user{
+    color: gold;
+    font-family:Georgia, 'Times New Roman', Times, serif  ;
+    font-size: x-large;
+    height: fit-content;
+    padding-top: 2px;
+    margin-right: 2rem;
+}
+.edit{
+    color: gold;
+    height: fit-content;
+    background: none;
+    font-size: x-large;
+    border: 2px solid gold;
+    font-family:Georgia, 'Times New Roman', Times, serif  ;
+    margin-right:5rem;
+    
+    
+}
+.admin{
+    display: flex;
+    
 }
 .search{
     position:absolute;
@@ -82,7 +115,6 @@ html{
 .userLogin{
     width:fit-content;
     height:50%;
-    border:2px solid gold;
     display:flex;
     justify-content: center;
     flex-grow: 0;
