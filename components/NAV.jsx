@@ -1,5 +1,4 @@
 "use client"
-
 import Image from "next/image";
 import { useState } from "react";
 import SignUp from "./signUp";
@@ -12,31 +11,54 @@ export default function Navigation(){
     const {data:session,status} = useSession();
     let [show,setShow] = useState("");
     let [edit,setEdit] = useState(false);
+    let [login,setLogin] = useState(false)
     return( 
         <>
             <nav className='nav' >
+                <a href="/" className="logoL">
                 <Image className="logo" src="/Made-In-Abyss-Logo.png"
                 width={640}
                 height={426}
                 alt="logo"
                 />
-                { !session?.user&&<div className="userLogin"> <button onClick={
+                </a>
+                { !session?.user&&<div className="userLogin"> {!login?<button onClick={
                     ()=>{
                         setShow("signIn");
+                        setLogin(true)
                     }
-                }>Sign Up/Login</button></div>|| session?.user?.name!='admin'&&(<><button className="edit" onClick={
+                }>Sign Up/Login</button>:<button onClick={
+                    ()=>{
+                        setShow("");
+                        setLogin(false)
+                    }
+                }>Close</button> }</div>|| session?.user?.name!='admin'&&(<>{!edit?<button className="edit" onClick={
                     ()=>{
                         setEdit(true)
                     }
-                }>Edit</button>
+                }>Edit</button>:
+                <button className="edit" onClick={
+                    ()=>{
+                        setEdit(false)
+                    }
+                }>Close</button>}
                 <div className="user" onClick={
                     ()=>{
                         signOut();
                     }
                 }>  {session?.user?.name}</div>
-                </>)||session?.user?.name=="admin"&&<div className="admin"> <button className="edit">add</button>
-                <Link
-                href="/notification"><button className="edit">notification</button></Link>
+                </>)||session?.user?.name=="admin"&&<div className="admin">{!edit?<button className="edit" onClick={
+                    ()=>{
+                        setEdit(true)
+                    }
+                }>Edit</button>:
+                <button className="edit" onClick={
+                    ()=>{
+                        setEdit(false)
+                    }
+                }>Close</button>}
+                <a
+                href="/notification"><button className="edit">notification</button></a>
                 <div className="user" onClick={
                     ()=>{
                         signOut();
@@ -45,7 +67,7 @@ export default function Navigation(){
                </div> }
             </nav>
             {edit&&<UpdateF/>}
-            {show=="signIn"?<SignIn set={setShow}/>:show=="signUp"?<SignUp set={setShow}/>:<></>}
+            {show=="signIn"?<SignIn set={setShow} />:show=="signUp"?<SignUp set={setShow}/>:<></>}
             
             
         </>

@@ -27,6 +27,7 @@ export default function SignUp({set}:{set:(s:string)=>void}){
                         set("signIn")
                     }
                 }}>
+                    <h1>Sign Up</h1>
                     <label htmlFor="name">Name</label>
                     <input id="name"type="name" name='name' required={true}/>
                     <label htmlFor="email">Email</label>

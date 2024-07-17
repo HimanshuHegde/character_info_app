@@ -30,6 +30,10 @@
     padding-bottom: 0px;
      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.285); 
 }
+.acceptDecline{
+    display: flex;
+    column-gap: 6rem;
+}
 .characterInfo{
     width:100%;
     height:100%;
@@ -39,7 +43,24 @@
     backdrop-filter: blur(5px);
     top:5rem;
     padding-bottom: 5rem;
-    background-color: rgba(0, 0, 0, 0.483);
+    background-color: rgba(0, 0, 0, 0.816);
+}
+.accept{
+    border:2px solid limegreen;
+    background-color: transparent;
+    color : limegreen;
+    padding:0.5rem;
+        display: inline;
+    
+}
+
+.decline{
+    border:2px solid red;
+    color:red;
+    background-color: transparent;
+    padding:0.5rem;
+    display: inline;
+    
 }
 hr{
     width: 100%;

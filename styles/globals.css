@@ -37,7 +37,7 @@ html{
     visibility: visible;
     display: block;
     transition:visibl 0.5s, opacity 0.5s;
-    z-index: 2;
+    z-index: 3;
     display:flex;
     justify-content: center;    
     padding-top:10px;
@@ -51,10 +51,13 @@ html{
 }
 .userLogin>button{
     height:100%;
-    width:100%;
+    width:fit-content;
     color: gold;
     border:2px solid gold;
     background-color: transparent;
+}
+.userLogin{
+    margin-left: auto;
 }
 .user{
     color: gold;
@@ -63,6 +66,9 @@ html{
     height: fit-content;
     padding-top: 2px;
     margin-right: 2rem;
+}
+.user:hover{
+    cursor:default;
 }
 .edit{
     color: gold;
@@ -77,6 +83,7 @@ html{
 }
 .admin{
     display: flex;
+    margin-left: auto;
     
 }
 .search{
@@ -106,10 +113,16 @@ html{
     outline: none;
 }
 .logo{
-    width:10%;
-    height:90%;
-    margin-right: auto;
+     width: 7rem;
+    height:100%; 
     margin-left: 1rem;
+}
+.logoL{
+    width:fit-content;
+    height:100%;
+}
+.nav>button{
+    margin-left: auto;
 }
 
 .userLogin{

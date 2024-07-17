@@ -17,6 +17,7 @@ async function connect(){
         isConnected=true
     }
 }
+
 export async function update(data:any){
     try{
         await connect();
@@ -25,6 +26,30 @@ export async function update(data:any){
         return true;
 }catch(error){
     console.log(error+'in update')
+}
+}
+export async function insert(type:string,data:any){
+    try{
+        await connect();
+        if(type=='characters'){
+            await characterCollection.updateOne({"name":data.name},{$set:data},{upsert:true});
+        }else if (type=='artifacts'){
+            await artifactsCollection.updateOne({"name":data.name},{$set:data},{upsert:true});
+        }else if(type=='whistles'){
+            await whistleCollection.updateOne({"name":data.name},{$set:data},{upsert:true});
+        }
+        return true;
+    }catch(error){
+        console.log(error+'in insert')
+}
+}
+export async function Delete(data:any){
+    try{
+        await connect();
+        await updateCollection.deleteOne({"name":data.name});
+        return true;
+    }catch(error){
+        console.log(error+'in delete')
 }
 }
 export async function search(name:(string|undefined)){

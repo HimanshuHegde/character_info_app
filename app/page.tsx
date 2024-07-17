@@ -111,7 +111,7 @@ export default  function Home(){
         <p className="heading">WHISTLES</p>
         <div className="whistleInfo">
           {
-            data?.[0].map((e:(any))=>(<a className="anchorS" href={`/whistles/?_id=${encodeURIComponent(e._id)}`}><Card image={e.image} name ={e.name}/></a>))
+            data?.[0].map((e:(any))=>(<a className="anchorS" href={`/whisltes/?_id=${encodeURIComponent(e._id)}`}><Card image={e.image} name ={e.name}/></a>))
           }
       </div>
       </div> 

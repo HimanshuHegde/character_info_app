@@ -17,12 +17,14 @@ export default function SignIn({set}:{set:(s:string)=>void}){
                        let a = await signIn("credentials",{redirect:false,...data});
                        if(a?.ok){
                         setRes('login successful');
+                        setTimeout(()=>set(''),1000)
                        }else{
                         setRes('login failed')
                        }
                         
                     }
                 }>
+                    <h1>Login</h1>
                     <label htmlFor="email">Email</label>
                     <input id="email"type="email" name='email' required={true}/>
                     <label htmlFor="password">Password ( minimum of 8 character )</label>

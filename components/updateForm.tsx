@@ -1,17 +1,19 @@
 'use client'
 import { useEffect, useState } from "react"
 import '@/styles/update.css'
-import { search } from "@/backend"
+import { insert, search } from "@/backend"
+import { useSession } from "next-auth/react"
 export default function UpdateF(){
-    let [info,setInfo] = useState<any|null>({})
-    let [type,setType] = useState<string>('Whistles')
+    let {data:session} = useSession();
+    let [info,setInfo] = useState<any|''>({})
+    let [type,setType] = useState<string>('whistles')
     let [name,setName] = useState<string|undefined>('')
     useEffect(()=>{
         (async()=>{
             let index = 0;
-            if(type=='Characters'){
+            if(type=='characters'){
                 index = 0;
-            }else if(type=='Artifacts'){
+            }else if(type=='artifacts'){
                 index = 1
                
             }else{
@@ -20,9 +22,12 @@ export default function UpdateF(){
             }
             if(name){
             const result = await search(name);
-            const [a] = result[index] 
+            const [a] = result[index]
+            if(!a){
+                setInfo(name)
+            console.log(name)
+            }else
             setInfo(a)
-            console.log(a)
             }
             
         })()
@@ -34,17 +39,24 @@ export default function UpdateF(){
 
 
     function pr(e:any){
-        console.log(JSON.stringify(e));
+        console.log(e);
     }
     return(<>
         <div className="updateFContainer">
             <form className="uForm" onSubmit={
                 async (e)=>{
                     e.preventDefault();
+                    
                     let data = Object.fromEntries(new FormData(e.currentTarget).entries());
-                    data = {...data,name:info?.name}
+                    data = {...data,name:info?.name||name}
                     if(data.name){
-                        pr(data);
+                        
+                        let str = (data.class).toString();
+                        if(session?.user?.name=='admin'){
+                            pr(data);
+                            insert(str,data)
+                            return 'done'
+                        }
                         let result = await fetch('/api/update',{
                             method:"POST",
                             headers:{
@@ -60,49 +72,49 @@ export default function UpdateF(){
                         setType(e.target.value);
                     }
                 } value={type}>    
-                    <option value="Whistles">whistle</option>
-                    <option value="Characters">characters</option>
-                    <option value="Artifacts">artifacts</option>
+                    <option value="whistles">whistle</option>
+                    <option value="characters">characters</option>
+                    <option value="artifacts">artifacts</option>
                 </select>
                 <label htmlFor="name">name</label>
-                <input id="name" type="text" name="name"  onChange={
+                <input required = {true} id="name" type="text" name="name"  onChange={
                     (e)=>{
                         setName(e.target.value);
                     }
                 } value={name}/>
-                {type=="Whistles"&&<>
+                {type=="whistles"&&<>
                 <label htmlFor="qualification">qualification</label>
-                <input id="qualification" type="text" name="qualification"  defaultValue={info?.qualification}  key={info?._id + "qualification"}></input>
+                <input required = {true} id="qualification" type="text" name="qualification"  defaultValue={info?.qualification}  key={info?._id + "qualification"}></input>
                 <label htmlFor="image">image</label>
-                <input id="image" type="text" name="image"  defaultValue={info?.image}  key={info?._id + "image"}></input>
+                <input required = {true} id="image" type="text" name="image"  defaultValue={info?.image}  key={info?._id + "image"}></input>
                 <label htmlFor="description">Discription</label>
-                <textarea id="description"  name="description"  defaultValue={info?.description}  key={info?._id + "description"} />
+                <textarea required = {true} id="description"  name="description"  defaultValue={info?.description}  key={info?._id + "description"} />
                 </>
                  || 
-                type=='Characters'&&<>
+                type=='characters'&&<>
                 <label htmlFor="age">age</label>
-                <input id="age" type="text" name="age"  defaultValue={info?.age}  key={info?._id + "age"}/>
+                <input required = {true} id="age" type="text" name="age"  defaultValue={info?.age}  key={info?._id + "age"}/>
                 <label htmlFor="actualPhoto">actual photo</label>
-                <input id="actualPhoto" type="text" name="actualPhoto"  defaultValue={info?.actualPhoto}  key={info?._id + "actualPhoto"}/>
+                <input required = {true} id="actualPhoto" type="text" name="actualPhoto"  defaultValue={info?.actualPhoto}  key={info?._id + "actualPhoto"}/>
                 <label htmlFor="image">image</label>
-                <input id="image" type="text" name="image"  defaultValue={info?.image}  key={info?._id + "image"}/>
+                <input required = {true} id="image" type="text" name="image"  defaultValue={info?.image}  key={info?._id + "image"}/>
                 <label htmlFor="description">description</label>
-                <textarea id="description"  name="description"  defaultValue={info?.description}  key={info?._id + "description"}/>
+                <textarea required = {true} id="description"  name="description"  defaultValue={info?.description}  key={info?._id + "description"}/>
                 </>
                 ||
-                type=='Artifacts'&&
+                type=='artifacts'&&
                 <>
                
                  <label htmlFor="type">type</label>
-                 <input id="type" type="text" name="type"  defaultValue={info?.Type}  key={info?._id + "type"}/>
+                 <input required = {true} id="type" type="text" name="type"  defaultValue={info?.Type}  key={info?._id + "type"}/>
                  <label htmlFor="Source">Source</label>
-                 <input id="Source" type="text" name="Source"  defaultValue={info?.Source}  key={info?._id + "Source"}/>
+                 <input required = {true} id="Source" type="text" name="Source"  defaultValue={info?.Source}  key={info?._id + "Source"}/>
                  <label htmlFor="image">image</label>
-                 <input id="image" type="text" name="image3" defaultValue={info?.image} key={info?._id + "image"}/>
+                 <input required = {true} id="image" type="text" name="image" defaultValue={info?.image} key={info?._id + "image"}/>
                  <label htmlFor="Effects">Effects</label>
-                 <input id="Effects" type="text" name="Effects"  defaultValue={info?.Effects}  key={info?._id + "Effects"}/>
+                 <input required = {true} id="Effects" type="text" name="Effects"  defaultValue={info?.Effects}  key={info?._id + "Effects"}/>
                  <label htmlFor="Description">Description</label>
-                 <textarea id="Description" name="Description"  defaultValue={info?.Description}  key={info?._id + "Description"}/>
+                 <textarea required = {true} id="Description" name="Description"  defaultValue={info?.Description}  key={info?._id + "Description"}/>
                 </>}
                 <button type="submit">Submit</button>
             </form>
