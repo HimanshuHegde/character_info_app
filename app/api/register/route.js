@@ -10,10 +10,12 @@ export async function POST(request) {
     console.log(body.data)
     if(!name||!email || !password)
         return new NextResponse("Missing email,password",{status:400})
-    const exists = await prisma.userInfo.findUnique({
+    const exists = await prisma.userInfo.findFirst({
         where:{
-            name
-            
+            OR:[
+                {email},
+                {name}
+            ]
         }
     })
     if(exists)

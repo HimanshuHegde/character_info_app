@@ -23,7 +23,7 @@ export default function Notification() {
             <div className="notiContainer">
 
             {
-                data.map((d:any)=>{
+                data?.map((d:any)=>{
                     return <Link className="notiCardL" href={`/notification/${d._id + "&" + d.class}`}><Cards image={d.image} name={d.name}/></Link>
                 })
             }
