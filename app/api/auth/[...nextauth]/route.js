@@ -9,7 +9,7 @@ import { debug } from "console";
 
 
 const prisma = new PrismaClient()
-export const authOptions = {
+const authOptions = {
   adapter:PrismaAdapter(prisma),
   // Configure one or more authentication providers
   providers: [
