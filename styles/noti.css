@@ -1,0 +1,14 @@
+.notiContainer{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    width: 100vw;
+    height: 100vh;
+    place-items: center;
+    background-color: black;
+    padding-top: 4rem;
+    text-decoration: none;
+}
+.notiCardL{
+    text-decoration: none;
+}

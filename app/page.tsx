@@ -3,9 +3,10 @@ import Image from "next/image";
 import "@/styles/home.css"
 import Card from '@/components/card'
 import Search from '@/components/search'
+import { useSession } from "next-auth/react";
 import { Noto_Serif_JP } from "next/font/google";
 import { getArtifactsData, getCharacterData, getWhistleData, search } from "@/backend";
-import { get } from "http";
+
 import { useEffect, useState } from "react";
 import { useSearchParams,useRouter, usePathname } from "next/navigation";
 import SearchResult from "@/components/searchResult";
@@ -14,54 +15,62 @@ const serif =Noto_Serif_JP({
   subsets: ['latin'],
 })
 export default  function Home(){
+ 
+  const {data:session,status} = useSession();
+  useEffect(()=>{
+    console.log(session)
+  },[session])
   const useParam = useSearchParams();
-  const filter = document.querySelector(".filters");
-  let whistleContainer = document.querySelector(".whistleInfoContainer") as HTMLElement|null;
-  let charactersContainer = document.querySelector(".charactersInfoContainer") as HTMLElement|null;
-  let artifactsContainer = document.querySelector(".artifactInfoContainer") as HTMLElement|null;
-  filter?.addEventListener("change",(event)=>{
-    let target = event.target as HTMLSelectElement;
-    let value = target.value;
-    switch(value){
-      case "All":
-        if(whistleContainer)
-        whistleContainer.style.display="block";
-        if(charactersContainer)
-          charactersContainer.style.display="block";
-        if(artifactsContainer)
-          artifactsContainer.style.display="block"
-        break;
-      case "whistleInfoContainer":
-        if(whistleContainer){
+  useEffect(()=>{
+    
+    const filter = document.querySelector(".filters") as HTMLSelectElement|null;
+    let whistleContainer = document.querySelector(".whistleInfoContainer") as HTMLElement|null;
+    let charactersContainer = document.querySelector(".charactersInfoContainer") as HTMLElement|null;
+    let artifactsContainer = document.querySelector(".artifactInfoContainer") as HTMLElement|null;
+    filter?.addEventListener("change",(event)=>{
+      let target = event.target as HTMLSelectElement;
+      let value = target.value;
+      switch(value){
+        case "All":
+          if(whistleContainer)
           whistleContainer.style.display="block";
-          
-        }
-        if(charactersContainer){
-          charactersContainer.style.display="none";
-        
-        }
-        if(artifactsContainer){
-          artifactsContainer.style.display="none"
-        }
-          break;
-      case "charactersInfoContainer":
-        if(whistleContainer)
-          whistleContainer.style.display="none";
-        if(charactersContainer)
-          charactersContainer.style.display="block";
-        if(artifactsContainer)
-          artifactsContainer.style.display="none"
-          break;
-      case "artifactsInfoContainer":
-        if(whistleContainer)
-          whistleContainer.style.display="none";
           if(charactersContainer)
-            charactersContainer.style.display="none";
+            charactersContainer.style.display="block";
           if(artifactsContainer)
             artifactsContainer.style.display="block"
           break;
-    }
-  })
+        case "whistleInfoContainer":
+          if(whistleContainer){
+            whistleContainer.style.display="block";
+            
+          }
+          if(charactersContainer){
+            charactersContainer.style.display="none";
+          
+          }
+          if(artifactsContainer){
+            artifactsContainer.style.display="none"
+          }
+            break;
+        case "charactersInfoContainer":
+          if(whistleContainer)
+            whistleContainer.style.display="none";
+          if(charactersContainer)
+            charactersContainer.style.display="block";
+          if(artifactsContainer)
+            artifactsContainer.style.display="none"
+            break;
+        case "artifactsInfoContainer":
+          if(whistleContainer)
+            whistleContainer.style.display="none";
+            if(charactersContainer)
+              charactersContainer.style.display="none";
+            if(artifactsContainer)
+              artifactsContainer.style.display="block"
+            break;
+      }
+    })
+  },[])
    const param = useSearchParams();
      
    
@@ -102,7 +111,7 @@ export default  function Home(){
         <p className="heading">WHISTLES</p>
         <div className="whistleInfo">
           {
-            data?.[0].map((e:(any))=>(<a href={`/whistles/?_id=${encodeURIComponent(e._id)}`}><Card image={e.image} name ={e.name}/></a>))
+            data?.[0].map((e:(any))=>(<a className="anchorS" href={`/whisltes/?_id=${encodeURIComponent(e._id)}`}><Card image={e.image} name ={e.name}/></a>))
           }
       </div>
       </div> 
@@ -110,7 +119,7 @@ export default  function Home(){
         <p className="heading">Characters</p>
         <div className="charactersInfo">
           {
-            data?.[1].map((e:(any))=>(<a href={`/characters/?_id=${encodeURIComponent(e._id)}`}>
+            data?.[1].map((e:(any))=>(<a className="anchorS" href={`/characters/?_id=${encodeURIComponent(e._id)}`}>
               <Card image={e.image} name ={e.name}/>
             </a>))
           }
@@ -120,14 +129,14 @@ export default  function Home(){
         <p className="heading">ARTIFACTS</p>
         <div className="artifactInfo">
           {
-          data?.[2].map((e:(any))=>(<a href={`/artifacts/?_id=${encodeURIComponent(e._id)}`}>
+          data?.[2].map((e:(any))=>(<a className="anchorS" href={`/artifacts/?_id=${encodeURIComponent(e._id)}`}>
           <Card image={e.image} name ={e.name}/>
         </a>))
           }
         </div>
       </div>
       </div>
-      {param.get("name")==null?null:
+      {param.get("name")&&
       <SearchResult/>}
     </div>
     

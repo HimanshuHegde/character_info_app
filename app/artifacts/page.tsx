@@ -4,9 +4,11 @@ import Search from "@/components/search";
 import {  getIndividualArtifactsData,  } from "@/backend";
 import Acards from "@/components/Acard"; 
 import { useEffect, useState } from "react";
+import { getServerSession } from "next-auth";
 import { useSearchParams,useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import SearchResult from "@/components/searchResult";
+
 export default  function Artifacts(){
     
     let [artifact,setartifact] = useState<any>({})
