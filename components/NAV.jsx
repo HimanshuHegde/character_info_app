@@ -14,7 +14,6 @@ export default function Navigation(){
     let [login,setLogin] = useState(false)
     return( 
         <>
-            <nav className='nav' >
                 <a href="/" className="logoL">
                 <Image className="logo" src="/Made-In-Abyss-Logo.png"
                 width={640}
@@ -22,6 +21,7 @@ export default function Navigation(){
                 alt="logo"
                 />
                 </a>
+            <nav className='nav' >
                 { !session?.user&&<div className="userLogin"> {!login?<button onClick={
                     ()=>{
                         setShow("signIn");

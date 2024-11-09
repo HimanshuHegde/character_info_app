@@ -2,6 +2,8 @@ body{
     margin:0;
     padding: 0;
     overflow-x: hidden;
+    width: 100vw;
+    height: fit-content;
     
     
 }
@@ -30,8 +32,8 @@ html{
   }
   
 .nav{
-    width:98vw;
-    position: fixed;
+    width:100%;
+    position: absolute;
     height: 4rem;
     opacity: 1;
     visibility: visible;
@@ -52,6 +54,7 @@ html{
 .userLogin>button{
     height:100%;
     width:fit-content;
+    margin-right: 20px;
     color: gold;
     border:2px solid gold;
     background-color: transparent;
@@ -65,7 +68,14 @@ html{
     font-size: x-large;
     height: fit-content;
     padding-top: 2px;
-    margin-right: 2rem;
+    margin-right: 20px;
+    
+}
+@media (max-width:684px){
+    body,.MainDiv,.backgroundImg1{
+        width: 684px !important;
+    }
+
 }
 .user:hover{
     cursor:default;
@@ -77,9 +87,7 @@ html{
     font-size: x-large;
     border: 2px solid gold;
     font-family:Georgia, 'Times New Roman', Times, serif  ;
-    margin-right:5rem;
-    
-    
+    margin-right: 1rem;
 }
 .admin{
     display: flex;
@@ -113,13 +121,16 @@ html{
     outline: none;
 }
 .logo{
-     width: 7rem;
-    height:100%; 
-    margin-left: 1rem;
+      width: 100px;
+    height:auto;  
+    
 }
 .logoL{
+    position: fixed;
+    z-index: 2;
+    margin-top: 5px;
     width:fit-content;
-    height:100%;
+    height:auto;
 }
 .nav>button{
     margin-left: auto;

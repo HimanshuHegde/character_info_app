@@ -17,7 +17,7 @@ export default function SignUp({set}:{set:(s:string)=>void}){
                         },
                         body:JSON.stringify(data)
                     })
-                    console.log(response)
+                    console.log(response.ok , data)
                     if(response.ok){
                         setResult("SignUp successfull.")
                     }else{

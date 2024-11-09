@@ -1,8 +1,8 @@
 
 .MainDiv{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    z-index: -1;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +79,8 @@ z-index: 1;
 .categoryDiv{
     height:fit-content;
     width:fit-content;
-    margin-left:15rem;
+    margin-left:auto;
+    padding-right: 20px;
 }
 .category{
     display:inline-block;
@@ -112,10 +113,21 @@ z-index: 1;
 }
 
 .whistleInfo,.artifactInfo,.charactersInfo{
-    display:grid;
-    grid-template-columns: repeat(5,auto);
-    place-items: center;
-    row-gap: 4rem;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    row-gap: 2rem;
+    column-gap: 2rem;
+    margin-right: 10px;
+}
+
+@media (max-width: 1234px) {
+    .whistleInfo,.artifactInfo,.charactersInfo{
+        display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    }
 }
 .whistleInfoContainer,.artifactInfoContainer,.charactersInfoContainer p{
    text-align: center;
@@ -126,6 +138,7 @@ z-index: 1;
     background-color: rgba(0, 0, 0, 0.167);
     margin-bottom: 4rem;
     margin-top: 3rem;
+    width: 100vw;
     
 }
 
