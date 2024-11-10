@@ -4,10 +4,23 @@ import '@/styles/update.css'
 import { insert, search } from "@/backend"
 import { useSession } from "next-auth/react"
 export default function UpdateF(){
+    let [success,setSuccess] = useState<boolean|null>(null)
     let {data:session} = useSession();
     let [info,setInfo] = useState<any|''>({})
     let [type,setType] = useState<string>('whistles')
     let [name,setName] = useState<string|undefined>('')
+    useEffect(() => {
+        if (success !== null) {
+          const confirmation = document.getElementById('confirmation') as HTMLElement | null;
+          if (confirmation) confirmation.style.display = 'block';
+    
+          const timer = setTimeout(() => {
+            if (confirmation) confirmation.style.display = 'none';
+            setSuccess(null); 
+          }, 2000);
+    
+        }
+      }, [success]);
     useEffect(()=>{
         (async()=>{
             let index = 0;
@@ -64,6 +77,11 @@ export default function UpdateF(){
                             },
                             body:JSON.stringify(data)
                         })
+                        if(result.status==200){
+                            setSuccess(true)
+                        }else{
+                            setSuccess(false)
+                        }
                     }
                 }
             }>
@@ -117,7 +135,9 @@ export default function UpdateF(){
                  <textarea required = {true} id="Description" name="Description"  defaultValue={info?.Description}  key={info?._id + "Description"}/>
                 </>}
                 <button type="submit">Submit</button>
+            {success?<p style={{color:"#0dff0d"}} id="confirmation">update successful</p>:success==false&&<p style={{color:"red"}} id="confirmation">update failed</p>}
             </form>
         </div>
     </>)
 }
+

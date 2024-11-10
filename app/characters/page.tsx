@@ -14,7 +14,7 @@ export default  function Character(){
     useEffect(()=>{
         (async ()=>{
             const id = uesParam.get("_id")
-            setCharacter(await getIndividualCharacterData(id?id:""));
+            setCharacter(await getIndividualCharacterData(id?id:undefined));
         })()
     },[])
     

@@ -17,7 +17,7 @@ export default  function Artifacts(){
     useEffect(()=>{
         (async ()=>{
             const id = useParam.get("_id")
-            setartifact(await getIndividualArtifactsData(id?id:""));
+            setartifact(await getIndividualArtifactsData(id?id:undefined));
         })()
     },[])
     

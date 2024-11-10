@@ -14,7 +14,7 @@ export default  function Whistles(){
     useEffect(()=>{
         (async ()=>{
             const id = useParam.get("_id")
-            setWhistle(await getIndividualWhistlesData(id?id:""));
+            setWhistle(await getIndividualWhistlesData(id?id:undefined));
         })()
     },[])
     

@@ -82,7 +82,7 @@ export async function getArtifactsData(){
         console.log("artifactsCollection error");
     }
 }
-export async function getIndividualCharacterData(oid:(string)){
+export async function getIndividualCharacterData(oid:(string|undefined)){
     try{
         await connect();
         let id = new ObjectId(oid)
@@ -92,7 +92,7 @@ export async function getIndividualCharacterData(oid:(string)){
     }
 }
 
-export async function getIndividualArtifactsData(oid:(string)){
+export async function getIndividualArtifactsData(oid:(string|undefined)){
     try{
         await connect();
        let id = new ObjectId(oid)
@@ -102,7 +102,7 @@ export async function getIndividualArtifactsData(oid:(string)){
     }
 }
 
-export async function getIndividualWhistlesData(oid:(string)){
+export async function getIndividualWhistlesData(oid:(string|undefined)){
     try{
         await connect();
         let id = new ObjectId(oid)

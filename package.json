@@ -10,22 +10,22 @@
     "prisma": "prisma generate"
   },
   "dependencies": {
-    "@auth/prisma-adapter": "^2.4.1",
-    "@prisma/client": "^5.21.1",
+    "@auth/prisma-adapter": "^2.7.3",
+    "@prisma/client": "^5.22.0",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
-    "mongodb": "^6.9.0",
-    "next": "14.2.4",
+    "mongodb": "^6.10.0",
+    "next": "^15.0.3",
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
-    "use-debounce": "^10.0.1"
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "prisma": "^5.21.1",
+    "prisma": "^5.22.0",
     "typescript": "^5"
   },
   "prisma": {
