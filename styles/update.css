@@ -14,6 +14,16 @@
     grid-template-rows: auto;
     backdrop-filter: blur(80px);
 }
+.uForm>label{
+    color: rgb(135, 118, 21);
+}
+.uForm>select>option{
+    background-color:#1b2023;
+}
+
+.uForm>button{
+    color:gold
+}
 select{
     background-color: rgba(0, 0, 0, 0.251);
     color:gold;

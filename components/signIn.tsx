@@ -8,7 +8,7 @@ export default function SignIn({set}:{set:(s:string)=>void}){
     let [res,setRes] = useState('') 
     let router = useRouter()
     return(
-        <>
+        <div className='siContainerC'>
             <div className="siContainer">
                 <form onSubmit={
                     async(e)=>{
@@ -39,7 +39,7 @@ export default function SignIn({set}:{set:(s:string)=>void}){
                 {res&&<p>{res}</p>}
             </div>
 
-        </>
+        </div>
     
     )
 }

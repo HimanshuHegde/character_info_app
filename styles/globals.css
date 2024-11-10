@@ -41,9 +41,9 @@ html{
     transition:visibl 0.5s, opacity 0.5s;
     z-index: 3;
     display:flex;
-    justify-content: center;    
-    padding-top:10px;
+    justify-content: flex-end;    
     pointer-events: none;
+    align-items: center;
 }
 .nav *{
     pointer-events: all;
@@ -63,17 +63,16 @@ html{
     margin-left: auto;
 }
 .user{
-    color: gold;
-    font-family:Georgia, 'Times New Roman', Times, serif  ;
+    color: #7b7032;
     font-size: x-large;
     height: fit-content;
-    padding-top: 2px;
     margin-right: 20px;
     
 }
-@media (max-width:684px){
-    body,.MainDiv,.backgroundImg1{
-        width: 684px !important;
+
+@media (max-width:1085px){
+    body,.MainDiv,.backgroundImg1,.nav,.mainMainDiv,.characterBackground,.siContainerC,.updateFContainer,.notiContainer{
+        width: 1085px !important;
     }
 
 }
@@ -91,7 +90,6 @@ html{
 }
 .admin{
     display: flex;
-    margin-left: auto;
     
 }
 .search{

@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function SignUp({set}:{set:(s:string)=>void}){
     let [result,setResult] = useState("")
     return(
-        <>
+        <div className='siContainerC'>
             <div className="siContainer"> 
                 <form onSubmit={async(e)=>{
                     let data = Object.fromEntries(new FormData(e.currentTarget).entries());
@@ -46,7 +46,7 @@ export default function SignUp({set}:{set:(s:string)=>void}){
                     <p> {result} </p>
                 }
             </div>
-        </>
+        </div>
     
     )
 }
