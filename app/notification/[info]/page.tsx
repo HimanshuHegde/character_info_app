@@ -3,7 +3,9 @@ import Acards from "@/components/Acard";
 import { JudgmentA, JudgmentD } from "@/components/judgement";
 import"@/styles/character.css"
 import Image from "next/image";
-export default async function DetailedInfo({params:{info}}:{params:{info:string}}){
+export default async function DetailedInfo({params}:{params:Promise<{info:string}>}) {
+    console.log(params);
+    const {info}  = await params
     const data = await getIndividualUpdateData(info.split("%26")[0]);
     const type = info.split("%26")[1];
     if(type=='characters'){

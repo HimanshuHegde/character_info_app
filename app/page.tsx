@@ -92,7 +92,7 @@ export default  function Home(){
       width={1920}
       height={1080}
       alt="backgroundImage1"/>
-      <h1 className={serif.className}>WELCOME TO THE WORLD OF MADE IN ABYSS</h1>
+      <h1>WELCOME TO THE WORLD OF MADE IN ABYSS</h1>
     </div>
     
     <div className="characterCardsHold">
