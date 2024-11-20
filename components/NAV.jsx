@@ -32,7 +32,10 @@ export default function Navigation(){
                         setShow("");
                         setLogin(false)
                     }
-                }>Close</button> }</div>|| session?.user?.name!='admin'&&(<>{!edit?<button className="edit" onClick={
+                }>Close</button> }</div>|| session?.user?.name!='admin'&&(<>
+                
+                
+                {!edit?<button className="edit" onClick={
                     ()=>{
                         setEdit(true)
                     }
@@ -42,6 +45,8 @@ export default function Navigation(){
                         setEdit(false)
                     }
                 }>Close</button>}
+                <a
+                href="/userNotification"><button className="edit">notification</button></a>
                 <div className="user" onClick={
                     ()=>{
                         signOut();

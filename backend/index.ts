@@ -1,6 +1,7 @@
 'use server'
 import { Document, MongoClient, ObjectId } from "mongodb";
 import { env } from "process";
+import { json } from "stream/consumers";
 
 let isConnected = false;
 
@@ -10,6 +11,7 @@ let characterCollection =  client.db('MadeInAbyss').collection('Characters');
 let whistleCollection = client.db('MadeInAbyss').collection('Whistles');
 let artifactsCollection = client.db('MadeInAbyss').collection('Artifacts');
 let updateCollection = client.db('MadeInAbyss').collection('updateDB');
+let notificationCollection = client.db('MadeInAbyss').collection('notificationResult');
 
 async function connect(){
     if(!isConnected){
@@ -153,3 +155,22 @@ export async function logIn({email,password}:{email:string,password:string}){
         return null;
     }
 }
+
+export async function NotificationRetrieve(email:string){
+    try{
+        await connect();
+        return JSON.parse(JSON.stringify(await notificationCollection.find({email}).toArray()));
+    }catch(err){
+        return null;
+    }
+}
+
+export async function NotificationUpdate(user:number,info:string,email:string) {
+    try{
+        await connect();
+        return await notificationCollection.insertOne({"info":info,"email":email,"user":user});
+    }catch(err){
+        return null;
+    }
+} 
+    

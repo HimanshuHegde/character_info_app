@@ -1,9 +1,14 @@
 'use client'
 import { useEffect, useState } from "react"
 import '@/styles/update.css'
-import { insert, search } from "@/backend"
+import { insert, NotificationUpdate, search } from "@/backend"
 import { useSession } from "next-auth/react"
 export default function UpdateF(){
+    const [currentDateTime,SetCurrentDateTime] = useState<string>('');
+    useEffect(()=>{
+        const now = new Date();
+        SetCurrentDateTime(now.toLocaleString())
+    },[])
     let [success,setSuccess] = useState<boolean|null>(null)
     let {data:session} = useSession();
     let [info,setInfo] = useState<any|''>({})
@@ -62,6 +67,7 @@ export default function UpdateF(){
                     
                     let data = Object.fromEntries(new FormData(e.currentTarget).entries());
                     data = {...data,name:info?.name||name}
+                    data.email = session?.user?.email||"";
                     if(data.name){
                         
                         let str = (data.class).toString();
@@ -77,12 +83,22 @@ export default function UpdateF(){
                             },
                             body:JSON.stringify(data)
                         })
+                       
                         if(result.status==200){
-                            setSuccess(true)
+                            
+                            setSuccess(true);
+                            
+                            (async ()=>{
+                               
+                                  await  NotificationUpdate(1,'The form on '+data.name+' is submitted successfully on '+currentDateTime,session?.user?.email||'')
+                            })()
                         }else{
                             setSuccess(false)
                         }
+
+                        
                     }
+                   
                 }
             }>
                 <select name="class"   key={info?._id + "class"} onChange={
