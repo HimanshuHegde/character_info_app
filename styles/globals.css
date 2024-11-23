@@ -175,3 +175,64 @@ html{
     width: 34%;
 }
 
+.NotiContainer{
+    position: fixed;
+    height: 100vh;
+    padding-top:5rem;
+    width: 100vw;
+    background: fixed; 
+    background-image: url(/HD-wallpaper-made-in-abyss-orth-anime-hole-made-in-abyss.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.NotiContainer p{
+    margin:0%;
+    width: fit-content;
+}
+.rightNoti{
+    width: fit-content;
+    margin-left: auto;
+    padding:1rem;
+    padding-bottom: 0px;
+    border:3px solid gold;
+    background: #363535d9;
+    backdrop-filter: blur(3px);
+    border-radius: 50%;
+    color: gold;
+    border-radius: 40px;
+
+}
+.leftNoti{
+        width: fit-content;
+        margin-right: auto;
+        padding:1rem;
+        padding-bottom: 0px;
+        border:3px solid gold;
+        background: #363535d9;
+        backdrop-filter: blur(3px);
+        border-radius: 50%;
+        color: gold;
+        border-radius: 40px;
+    
+}
+ .NotiDiVHolder{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem; 
+   overflow: auto;
+   width: auto;
+   padding:1rem;
+   height: 85%;
+   padding-bottom: 2rem;
+
+ }
+ .Pr,.Pl{
+    font-size: xx-small;
+    color: #ffd7007d;
+    margin-block: 5px !important;
+}
+.Pl{
+    margin-left:auto !important;
+}
