@@ -1,19 +1,39 @@
 "use client"
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SignUp from "./signUp";
 import SignIn from "./signIn";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import UpdateF from "./updateForm";
 import Link from "next/link";
+import Search from "./search";
+import { useSearchParams } from "next/navigation";
 export default function Navigation(){
     const {data:session,status} = useSession();
+    let useParam = useSearchParams();
     let [show,setShow] = useState("");
     let [edit,setEdit] = useState(false);
     let [login,setLogin] = useState(false)
+    useEffect(()=>{
+
+        let navbar = document.querySelector('.nav');
+        if(navbar){
+            navbar.classList.add('active');
+        }
+    },[])
+    // useEffect(()=>{
+    //     let a = document.querySelector('.nav');
+    //     SetTest(a.style.width);
+    //     if (a &&a.style.width === '0%') {
+    //         a.style.width = '80%';
+    //         a.style.opacity = '1';
+    //     }
+    // },[test])
     return( 
         <>
+            <nav className='nav'>
+                
                 <a href="/" className="logoL">
                 <Image className="logo" src="/Made-In-Abyss-Logo.png"
                 width={640}
@@ -21,7 +41,10 @@ export default function Navigation(){
                 alt="logo"
                 />
                 </a>
-            <nav className='nav' >
+                <div>
+                <Search d={useParam.get("name")?.toString()}/>
+                </div>
+                <div className="navRight">
                 { !session?.user&&<div className="userLogin"> {!login?<button onClick={
                     ()=>{
                         setShow("signIn");
@@ -70,6 +93,7 @@ export default function Navigation(){
                     }
                 }>  {session?.user?.name}</div>
                </div> }
+               </div>
             </nav>
             {edit&&<UpdateF/>}
             {show=="signIn"?<SignIn set={setShow} />:show=="signUp"?<SignUp set={setShow}/>:<></>}

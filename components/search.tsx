@@ -13,16 +13,16 @@ export default function Search({d}:(any)){
         replace(`${path}?${param.toString()}`,{scroll:false});
     },300)
     
-    useEffect(()=>{
-    window.addEventListener('scroll',()=>{
-        let d = document.querySelector('.search') as HTMLElement;
-        if(window.scrollY>=window.innerHeight){
-            d.style.position = 'fixed';
-        }else{
-            d.style.position = 'absolute';
-        }
-    })    
-},[])
+//     useEffect(()=>{
+//     window.addEventListener('scroll',()=>{
+//         let d = document.querySelector('.search') as HTMLElement;
+//         if(window.scrollY>=window.innerHeight){
+//             d.style.position = 'fixed';
+//         }else{
+//             d.style.position = 'absolute';
+//         }
+//     })    
+// },[])
     return( <>
         <search className="search" onClick={()=>{
             if(!useParam.get("_id"))

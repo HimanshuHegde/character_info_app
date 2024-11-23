@@ -28,9 +28,9 @@ export default  function Character(){
                 />
                 <div className="charactersMainDiv">
                 {uesParam.get("name")?<SearchResult/>:null} 
-                    <div className="characterSearchDiv">
+                    {/* <div className="characterSearchDiv">
                             <Search d={uesParam.get("name")?.toString()}/>
-                    </div>
+                    </div> */}
                         
                     <div className="characterInfo">
                         <div className="characterCard">

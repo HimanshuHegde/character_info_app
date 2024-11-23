@@ -31,9 +31,9 @@ export default  function Artifacts(){
                 />
                 <div className="charactersMainDiv">
                 {useParam.get("name")?<SearchResult/>:null} 
-                    <div className="characterSearchDiv">
+                    {/* <div className="characterSearchDiv">
                             <Search d = {useParam.get("name")?.toString()}/>
-                    </div>
+                    </div> */}
                     
                         
                     <div className="characterInfo">

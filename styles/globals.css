@@ -32,18 +32,33 @@ html{
   }
   
 .nav{
-    width:100%;
-    position: absolute;
+    width: 0%;
+    position: fixed;
     height: 4rem;
-    opacity: 1;
+    opacity: 0;
+    transform: translate(-50%, 0);
+    border: 2px solid #f3a102;
+    left: 50%;
     visibility: visible;
     display: block;
-    transition:visibl 0.5s, opacity 0.5s;
+    transition: visibl 0.5s, opacity 0.5s;
     z-index: 3;
-    display:flex;
-    justify-content: flex-end;    
+    display: flex
+;
     pointer-events: none;
+    background: #000000ba;
     align-items: center;
+    border-radius: 64px;
+    margin-top: 1rem;
+    padding-right: 0rem;
+    transition: width 0.5s, opacity 0.5s ease-in-out;
+    transition-delay: 1s;
+    justify-content: space-between;
+}
+
+.nav.active{
+    width: 80%;
+    opacity: 1;
 }
 .nav *{
     pointer-events: all;
@@ -71,7 +86,7 @@ html{
 }
 
 @media (max-width:1085px){
-    body,.MainDiv,.backgroundImg1,.nav,.mainMainDiv,.characterBackground,.siContainerC,.updateFContainer,.notiContainer{
+    body,.MainDiv,.backgroundImg1,.mainMainDiv,.characterBackground,.siContainerC,.updateFContainer,.notiContainer{
         width: 1085px !important;
     }
 
@@ -93,14 +108,13 @@ html{
     
 }
 .search{
-    position:absolute;
     margin-top: 5px;
-    top:10px;
     z-index: 5;
 }
 .search>input[type="text"]{
     border-radius: 30px;
     width: 15rem;
+    
     height: 30px;
     position: relative;
     border:0;
@@ -119,16 +133,15 @@ html{
     outline: none;
 }
 .logo{
-      width: 100px;
+      width: 80px;
     height:auto;  
     
 }
 .logoL{
-    position: fixed;
     z-index: 2;
-    margin-top: 5px;
     width:fit-content;
     height:auto;
+    margin-left: 1rem;
 }
 .nav>button{
     margin-left: auto;
@@ -235,4 +248,8 @@ html{
 }
 .Pl{
     margin-left:auto !important;
+}
+
+.navRight{
+ display: flex;
 }

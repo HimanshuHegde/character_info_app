@@ -96,7 +96,7 @@ export default  function Home(){
     </div>
     
     <div className="characterCardsHold">
-     <Search d={useParam.get("name")?.toString()}/>
+     
      <div className="container">
       <div className="categoryDiv">
         <label className="category"><p>Category : </p></label>

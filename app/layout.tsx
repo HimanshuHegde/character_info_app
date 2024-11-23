@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import Nav from "@/components/NAV"
 import Provider from "@/context/provider"
 import { Session } from "next-auth";
+import { useRouter } from "next/router";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +20,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
   session: Session|null;
-}>) {
+}>)
+{
   return (
     <html lang="en">
       <Provider session={session}>
