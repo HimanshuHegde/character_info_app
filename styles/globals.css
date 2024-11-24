@@ -87,12 +87,12 @@ html{
     
 }
 
-@media (max-width:1085px){
+/* @media (max-width:1085px){
     body,.MainDiv,.backgroundImg1,.mainMainDiv,.characterBackground,.siContainerC,.updateFContainer,.notiContainer{
         width: 1085px !important;
     }
 
-}
+} */
 .user:hover{
     cursor:default;
 }
