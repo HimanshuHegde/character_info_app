@@ -24,6 +24,9 @@ export default function RootLayout({
 {
   return (
     <html lang="en">
+      <head>
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.0.1/css/unicons.css"></link>
+      </head>
       <Provider session={session}>
       <body className={inter.className}>
         <Nav/>

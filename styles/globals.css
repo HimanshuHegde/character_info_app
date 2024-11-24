@@ -99,7 +99,7 @@ html{
     height: fit-content;
     background: none;
     font-size: x-large;
-    border: 2px solid gold;
+    border-bottom: 2px solid rgba(255, 217, 0, 0.362);
     font-family:Georgia, 'Times New Roman', Times, serif  ;
     margin-right: 1rem;
 }
@@ -108,7 +108,6 @@ html{
     
 }
 .search{
-    margin-top: 5px;
     z-index: 5;
 }
 .search>input[type="text"]{
@@ -117,7 +116,6 @@ html{
     
     height: 30px;
     position: relative;
-    border:0;
     background-color: rgba(25, 24, 24, 0.849);
     border:2px #c5a181 solid;
     transition: 0.5s;
@@ -143,10 +141,25 @@ html{
     height:auto;
     margin-left: 1rem;
 }
-.nav>button{
+/* .nav>button{
     margin-left: auto;
+} */
+.Navmenu{
+    background: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    padding-left: 0% !important;
+    margin-right: 10px;
+}
+.uil{
+    color: gold;
 }
 
+.uil-bars:before{
+    transform: scale(3.5);
+    margin-left: 0px !important
+}
 .userLogin{
     width:fit-content;
     height:50%;

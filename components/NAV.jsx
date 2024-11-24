@@ -9,11 +9,12 @@ import UpdateF from "./updateForm";
 import Link from "next/link";
 import Search from "./search";
 import { useSearchParams } from "next/navigation";
+import Sidebar from "./sidebar";
 export default function Navigation(){
     const {data:session,status} = useSession();
     let useParam = useSearchParams();
     let [show,setShow] = useState("");
-    let [edit,setEdit] = useState(false);
+    // let [edit,setEdit] = useState(false);
     let [login,setLogin] = useState(false)
     useEffect(()=>{
 
@@ -44,7 +45,7 @@ export default function Navigation(){
                 <div>
                 <Search d={useParam.get("name")?.toString()}/>
                 </div>
-                <div className="navRight">
+                {/* <div className="navRight">
                 { !session?.user&&<div className="userLogin"> {!login?<button onClick={
                     ()=>{
                         setShow("signIn");
@@ -93,12 +94,18 @@ export default function Navigation(){
                     }
                 }>  {session?.user?.name}</div>
                </div> }
-               </div>
+               </div> */}
+               <button className="Navmenu" onClick={
+                   ()=>{
+                       let sidebar = document.querySelector('.sidebar');
+                       sidebar.classList.add('active');
+                       
+                   }
+               }><i className="uil uil-bars"></i></button>
             </nav>
-            {edit&&<UpdateF/>}
             {show=="signIn"?<SignIn set={setShow} />:show=="signUp"?<SignUp set={setShow}/>:<></>}
             
-            
+            <Sidebar/>
         </>
     )
 }

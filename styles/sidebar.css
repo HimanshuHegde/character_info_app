@@ -1,0 +1,51 @@
+.sidebar{
+    position: fixed;
+    width: 15rem;
+    height: 100vh;
+    background-color: #000000fe;
+    border-left: 2px solid gold;
+    right: -16rem;
+    z-index: 3;
+    transition: 0.5s;
+}
+.sidebarContent{
+    width: 100%;
+    height: fit-content;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.sidebar.active{
+    right: 0;
+}
+
+.close{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    cursor: pointer;
+    border: none;
+    padding-left: 0%;
+    background: transparent;
+}
+.uil-multiply:before{
+    color: gold;
+    transform: scale(1.5);
+    margin-left: 0px !important;
+}
+.sidebaruser{
+    color: gold;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.sidebaruser>p{
+    width: fit-content;
+    margin:0px;
+}
+
+.sidebaruser>p>span{
+    font-size: x-large;
+}

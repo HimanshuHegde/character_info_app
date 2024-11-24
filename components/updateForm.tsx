@@ -61,6 +61,14 @@ export default function UpdateF(){
     }
     return(<>
         <div className="updateFContainer">
+        <button className="closeForm" onClick={
+            ()=>{
+                document.querySelector('.updateFContainer')?.classList.remove('active');
+            }
+        }>
+        <p>CLOSE</p>
+        </button>
+        
             <form className="uForm" onSubmit={
                 async (e)=>{
                     e.preventDefault();
