@@ -52,7 +52,7 @@ html{
     margin-top: 1rem;
     padding-right: 0rem;
     transition: width 0.5s, opacity 0.5s ease-in-out;
-    transition-delay: 0.5s;
+    transition-delay: 1s;
     justify-content: space-between;
 }
 
