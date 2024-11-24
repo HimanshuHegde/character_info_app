@@ -19,7 +19,7 @@ export default function UserNotification() {
 useEffect(()=>{
   if(temp.current){
     temp.current.scrollTop = temp.current.scrollHeight;
-    console.log(temp.current.scrollTop)
+    // console.log(temp.current.scrollTop)
   }
 },[notInfo])
   return (

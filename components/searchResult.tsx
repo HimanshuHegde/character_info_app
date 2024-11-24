@@ -14,7 +14,7 @@ export default function SearchResult() {
 
       let temp = (await search(param?.get("name")?.toString()))
       setSearchResult(temp);
-      console.log(param.get('name'))
+      // console.log(param.get('name'))
     })()
   }, [param.get("name")])
   return (
@@ -25,7 +25,7 @@ export default function SearchResult() {
           return (
             <>
               <p className="searchHeading">Results : </p>
-              {a.map((x: any) => <a className="anchorS"href={`/${x.class}/?_id=${encodeURIComponent(x._id)}`}><Card image={x.image} name={x.name} /></a>)}
+              {a.map((x: any) => <a className="anchorS"href={`/${x.class}/?_id=${encodeURIComponent(x._id)}`} key={x._id}><Card image={x.image} name={x.name} /></a>)}
             </>
           )
         }

@@ -16,10 +16,10 @@ const serif =Noto_Serif_JP({
 })
 export default  function Home(){
  
-  const {data:session,status} = useSession();
-  useEffect(()=>{
-    console.log(session)
-  },[session])
+  // const {data:session,status} = useSession();
+  // useEffect(()=>{
+  //   console.log(session)
+  // },[session])
   const useParam = useSearchParams();
   useEffect(()=>{
     

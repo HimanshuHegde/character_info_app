@@ -1,11 +1,12 @@
 "use client";
 import "@/styles/sidebar.css";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import UpdateF from "./updateForm";
+import { useParams, useRouter } from "next/navigation";
 export default function Sidebar() {
   let { data: session } = useSession();
-  
+let router = useRouter();
 
 
   return (
@@ -25,9 +26,8 @@ export default function Sidebar() {
               Hi, <span>{session?.user?.name}</span>
             </p>
           </div>
-          ?
           <button
-            className="edit"
+            className="sidebaredit sidebarbtn"
             onClick={() => {
               let uf = document.querySelector(".updateFContainer");
               uf?.classList.add("active");
@@ -36,8 +36,25 @@ export default function Sidebar() {
           >
             Edit
           </button>
-          <button></button>
-          <button></button>
+          {session?.user?.name!="admin"?
+           <a
+           href="/userNotification">
+            <button className="sidebarnoti sidebarbtn">notification</button>
+            </a>:
+             <a
+             href="/notification">
+              <button className="sidebarnoti sidebarbtn">notification</button>
+             </a>}
+          <button className="sidebarlogout sidebarbtn" onClick={
+            ()=>{
+                router.push('/')
+                signOut({callbackUrl:"/"});
+              
+              
+            }
+          }>
+            Logout
+          </button>
         </div>
       </div>
       <UpdateF />

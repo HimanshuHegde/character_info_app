@@ -4,7 +4,8 @@
     height: 100vh;
     background-color: #000000fe;
     border-left: 2px solid gold;
-    right: -16rem;
+    right: 0rem;
+    transform: translate(100%);
     z-index: 3;
     transition: 0.5s;
 }
@@ -16,9 +17,10 @@
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+    align-items: center;
 }
 .sidebar.active{
-    right: 0;
+    transform: translate(0%);
 }
 
 .close{
@@ -40,6 +42,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    border-bottom: 2px solid gold;
 }
 .sidebaruser>p{
     width: fit-content;
@@ -48,4 +51,26 @@
 
 .sidebaruser>p>span{
     font-size: x-large;
+}
+.sidebarbtn{
+    border: none;
+    background: transparent;
+    color: gold;
+    cursor: pointer;
+    width: fit-content;
+    border-bottom: 2px solid rgba(255, 217, 0, 0.362);
+    font-family:Georgia, 'Times New Roman', Times, serif  ;
+    font-size: x-large;
+    padding-inline: 1rem;
+}
+.sidebaredit{
+    margin-top : 7rem;
+}
+.sidebarnoti{
+    margin-top:2rem;
+}
+.sidebarlogout{
+    position: fixed;
+    bottom:50px;
+
 }

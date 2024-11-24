@@ -42,7 +42,7 @@
     place-items: center;
     position: absolute;
     backdrop-filter: blur(5px);
-    top:5rem;
+    top:6rem;
     padding-bottom: 5rem;
     background-color: rgba(0, 0, 0, 0.816);
 }

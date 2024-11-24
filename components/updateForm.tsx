@@ -43,7 +43,7 @@ export default function UpdateF(){
             const [a] = result[index]
             if(!a){
                 setInfo(name)
-            console.log(name)
+            // console.log(name)
             }else
             setInfo(a)
             }
@@ -51,14 +51,14 @@ export default function UpdateF(){
         })()
 
     },[name,type])
-    useEffect(()=>{
-        console.log(info)
-    },[info])
+    // useEffect(()=>{
+    //     console.log(info)
+    // },[info])
 
 
-    function pr(e:any){
-        console.log(e);
-    }
+    // function pr(e:any){
+    //     console.log(e);
+    // }
     return(<>
         <div className="updateFContainer">
         <button className="closeForm" onClick={
@@ -80,7 +80,7 @@ export default function UpdateF(){
                         
                         let str = (data.class).toString();
                         if(session?.user?.name=='admin'){
-                            pr(data);
+                            // pr(data);
                             insert(str,data)
                             return 'done'
                         }

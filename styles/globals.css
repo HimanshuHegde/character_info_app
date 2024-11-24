@@ -52,7 +52,7 @@ html{
     margin-top: 1rem;
     padding-right: 0rem;
     transition: width 0.5s, opacity 0.5s ease-in-out;
-    transition-delay: 1s;
+    transition-delay: 0.5s;
     justify-content: space-between;
 }
 
@@ -73,6 +73,8 @@ html{
     color: gold;
     border:2px solid gold;
     background-color: transparent;
+    padding-block: 10px;
+    border-radius: 36px;
 }
 .userLogin{
     margin-left: auto;
@@ -94,15 +96,14 @@ html{
 .user:hover{
     cursor:default;
 }
-.edit{
+/* .edit{
     color: gold;
     height: fit-content;
     background: none;
     font-size: x-large;
     border-bottom: 2px solid rgba(255, 217, 0, 0.362);
     font-family:Georgia, 'Times New Roman', Times, serif  ;
-    margin-right: 1rem;
-}
+} */
 .admin{
     display: flex;
     

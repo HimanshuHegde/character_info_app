@@ -8,21 +8,27 @@ import { useSession } from "next-auth/react";
 import UpdateF from "./updateForm";
 import Link from "next/link";
 import Search from "./search";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Sidebar from "./sidebar";
+import SearchResult from "./searchResult";
 export default function Navigation(){
     const {data:session,status} = useSession();
     let useParam = useSearchParams();
     let [show,setShow] = useState("");
     // let [edit,setEdit] = useState(false);
     let [login,setLogin] = useState(false)
+    const path = usePathname();
     useEffect(()=>{
 
         let navbar = document.querySelector('.nav');
         if(navbar){
             navbar.classList.add('active');
         }
+        if (path === '/characters' || path === '/artifacts' || path === '/whisltes') {
+            navbar.style.position = "absolute";
+        }
     },[])
+        
     // useEffect(()=>{
     //     let a = document.querySelector('.nav');
     //     SetTest(a.style.width);
@@ -45,67 +51,37 @@ export default function Navigation(){
                 <div>
                 <Search d={useParam.get("name")?.toString()}/>
                 </div>
-                {/* <div className="navRight">
-                { !session?.user&&<div className="userLogin"> {!login?<button onClick={
-                    ()=>{
-                        setShow("signIn");
-                        setLogin(true)
-                    }
-                }>Sign Up/Login</button>:<button onClick={
-                    ()=>{
-                        setShow("");
-                        setLogin(false)
-                    }
-                }>Close</button> }</div>|| session?.user?.name!='admin'&&(<>
                 
-                
-                {!edit?<button className="edit" onClick={
-                    ()=>{
-                        setEdit(true)
-                    }
-                }>Edit</button>:
-                <button className="edit" onClick={
-                    ()=>{
-                        setEdit(false)
-                    }
-                }>Close</button>}
-                <a
-                href="/userNotification"><button className="edit">notification</button></a>
-                <div className="user" onClick={
-                    ()=>{
-                        signOut();
-                    }
-                }>  {session?.user?.name}</div>
-                </>)||session?.user?.name=="admin"&&<div className="admin">{!edit?<button className="edit" onClick={
-                    ()=>{
-                        setEdit(true)
-                    }
-                }>Edit</button>:
-                <button className="edit" onClick={
-                    ()=>{
-                        setEdit(false)
-                    }
-                }>Close</button>}
-                <a
-                href="/notification"><button className="edit">notification</button></a>
-                <div className="user" onClick={
-                    ()=>{
-                        signOut();
-                    }
-                }>  {session?.user?.name}</div>
-               </div> }
-               </div> */}
-               <button className="Navmenu" onClick={
-                   ()=>{
-                       let sidebar = document.querySelector('.sidebar');
-                       sidebar.classList.add('active');
-                       
-                   }
-               }><i className="uil uil-bars"></i></button>
+                     
+                     { !session?.user?
+                     <div className="navRight">
+                     <div className="userLogin"> {!login?<button onClick={
+                         ()=>{
+                             setShow("signIn");
+                             setLogin(true)
+                         }
+                     }>Sign Up/Login</button>:<button onClick={
+                         ()=>{
+                             setShow("");
+                             setLogin(false)
+                         }
+                     }>Close</button> }</div></div>:
+                     <button className="Navmenu" onClick={
+                        ()=>{
+                            let sidebar = document.querySelector('.sidebar');
+                            sidebar.classList.add('active');
+                            
+                        }
+                    }><i className="uil uil-bars"></i></button>
+                }
+              
             </nav>
             {show=="signIn"?<SignIn set={setShow} />:show=="signUp"?<SignUp set={setShow}/>:<></>}
             
             <Sidebar/>
+
+            {useParam.get("name")&&usePathname()!='/'&&
+      <SearchResult/>}  
         </>
     )
 }
