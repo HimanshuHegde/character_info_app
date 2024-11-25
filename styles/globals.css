@@ -75,6 +75,37 @@ html{
     background-color: transparent;
     padding-block: 10px;
     border-radius: 36px;
+    transition: all 0.5s;
+}
+@media (max-width:718px){
+    .userLogin>button{
+        font-size: xx-small;
+    }
+    .rightNoti,.leftNoti{
+        font-size: xx-small !important;
+    }
+    .NotiContainer{
+        padding-top: 6rem !important; 
+    }
+    .leftNoti{  
+        border-color: #e75213 !important;
+    }
+
+    .nav{
+        width: 90% !important;
+    }
+    .logo{
+        width: 59px !important;
+    }
+    .search>input[type="text"] {
+        width: 30vw !important;
+    }
+    .search>input[type="text"]:focus{
+        width: 40vw !important;
+    }
+    h1{
+        font-size: x-large !important;
+    }
 }
 .userLogin{
     margin-left: auto;
@@ -113,8 +144,8 @@ html{
 }
 .search>input[type="text"]{
     border-radius: 30px;
-    width: 15rem;
-    
+    width: 20vw;
+
     height: 30px;
     position: relative;
     background-color: rgba(25, 24, 24, 0.849);
@@ -127,7 +158,7 @@ html{
 
 .search>input[type="text"]:focus{
     border:2px gold solid;
-    width: 25rem;
+    width: 25vw;
     transition:0.5s;
     outline: none;
 }
@@ -218,7 +249,7 @@ html{
     margin:0%;
     width: fit-content;
 }
-.rightNoti{
+.rightNoti,.leftNoti{
     width: fit-content;
     margin-left: auto;
     padding:1rem;
@@ -229,20 +260,11 @@ html{
     border-radius: 50%;
     color: gold;
     border-radius: 40px;
-
+    transition: all 0.5s;
 }
-.leftNoti{
-        width: fit-content;
-        margin-right: auto;
-        padding:1rem;
-        padding-bottom: 0px;
-        border:3px solid gold;
-        background: #363535d9;
-        backdrop-filter: blur(3px);
-        border-radius: 50%;
-        color: gold;
-        border-radius: 40px;
-    
+.leftNoti{  
+    margin-right: auto !important;
+    margin-left:0 !important ;
 }
  .NotiDiVHolder{
     display: flex;
