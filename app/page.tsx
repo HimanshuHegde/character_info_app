@@ -111,7 +111,8 @@ export default  function Home(){
         <p className="heading">WHISTLES</p>
         <div className="whistleInfo">
           {
-            data?.[0].map((e:(any))=>(<a key={e._id} className="anchorS" href={`/whisltes/?_id=${encodeURIComponent(e._id)}`}><Card image={e.image} name ={e.name}/></a>))
+            
+            data?.[0]?.map((e:(any))=>(<a key={e._id} className="anchorS" href={`/whisltes/?_id=${encodeURIComponent(e._id)}`}><Card image={e.image} name ={e.name}/></a>))
           }
       </div>
       </div> 
@@ -119,7 +120,7 @@ export default  function Home(){
         <p className="heading">Characters</p>
         <div className="charactersInfo">
           {
-            data?.[1].map((e:(any))=>(<a key={e._id} className="anchorS" href={`/characters/?_id=${encodeURIComponent(e._id)}`}>
+            data?.[1]?.map((e:(any))=>(<a key={e._id} className="anchorS" href={`/characters/?_id=${encodeURIComponent(e._id)}`}>
               <Card image={e.image} name ={e.name}/>
             </a>))
           }
@@ -129,7 +130,7 @@ export default  function Home(){
         <p className="heading">ARTIFACTS</p>
         <div className="artifactInfo">
           {
-          data?.[2].map((e:(any))=>(<a key={e._id} className="anchorS" href={`/artifacts/?_id=${encodeURIComponent(e._id)}`}>
+          data?.[2]?.map((e:(any))=>(<a key={e._id} className="anchorS" href={`/artifacts/?_id=${encodeURIComponent(e._id)}`}>
           <Card image={e.image} name ={e.name}/>
         </a>))
           }
